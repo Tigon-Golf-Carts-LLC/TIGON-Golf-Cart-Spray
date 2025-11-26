@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,7 +9,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import { Skeleton } from "@/components/ui/skeleton";
 import { DollarSign, TrendingUp, MousePointer, ShoppingBag, Copy, Check } from "lucide-react";
-import { useState } from "react";
+import { SEO, seoPresets } from "@/components/SEO";
 import type { Affiliate, Product, AffiliateSale } from "@shared/schema";
 
 export default function AffiliateDashboard() {
@@ -93,6 +93,7 @@ export default function AffiliateDashboard() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <SEO {...seoPresets.affiliateDashboard} />
       <Header />
       
       <main className="flex-1 py-12">

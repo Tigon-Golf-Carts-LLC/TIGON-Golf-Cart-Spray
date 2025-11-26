@@ -3,6 +3,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Skeleton } from "@/components/ui/skeleton";
+import { SEO, seoPresets } from "@/components/SEO";
 import type { Product } from "@shared/schema";
 
 export default function Products() {
@@ -12,6 +13,7 @@ export default function Products() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <SEO {...seoPresets.products} />
       <Header />
       
       <main className="flex-1 py-12">

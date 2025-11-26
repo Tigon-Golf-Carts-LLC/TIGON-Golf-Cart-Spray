@@ -4,10 +4,22 @@ import { storage } from "./storage";
 import { setupAuth, isAuthenticated, isAdmin } from "./replitAuth";
 import { insertProductSchema, insertOrderSchema, insertBlogPostSchema } from "@shared/schema";
 import { fromZodError } from "zod-validation-error";
+import { getCloverPublicConfig, isCloverConfigured, createCharge } from "./clover";
+import { sendOrderConfirmation, sendStoreNotification, isEmailConfigured } from "./email";
 
 export async function registerRoutes(httpServer: Server, app: Express): Promise<Server> {
   // Auth middleware
   await setupAuth(app);
+
+  // Payment Configuration
+  app.get('/api/config/payment', (req, res) => {
+    res.json(getCloverPublicConfig());
+  });
+
+  // Email Configuration Status
+  app.get('/api/config/email', (req, res) => {
+    res.json({ configured: isEmailConfigured() });
+  });
 
   // Auth routes
   app.get('/api/auth/user', isAuthenticated, async (req: any, res) => {
@@ -84,26 +96,51 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   // Order routes
   app.post('/api/orders', async (req, res) => {
     try {
-      const { items, ...orderData } = req.body;
+      const { items, paymentToken, ...orderData } = req.body;
 
-      // Check for affiliate code in session or cookie
-      const affiliateCode = req.cookies?.affiliateRef || req.session?.affiliateRef;
+      // Check for affiliate code in cookies (set when visiting affiliate links)
+      const affiliateCode = req.cookies?.affiliateRef || (req.session as any)?.affiliateRef;
       let affiliateId = null;
+      let affiliateCodeUsed = null;
 
       if (affiliateCode) {
         const affiliate = await storage.getAffiliateByCode(affiliateCode);
         if (affiliate) {
           affiliateId = affiliate.id;
+          affiliateCodeUsed = affiliateCode;
         }
       }
 
-      // Create order
+      // Process payment if Clover is configured and token is provided
+      let paymentResult = null;
+      if (isCloverConfigured() && paymentToken) {
+        const totalCents = Math.round(parseFloat(orderData.total) * 100);
+        paymentResult = await createCharge({
+          source: paymentToken,
+          amount: totalCents,
+          description: `TIGON Spray Order`,
+          customerEmail: orderData.email,
+        });
+
+        if (!paymentResult.success) {
+          return res.status(400).json({ 
+            message: 'Payment failed', 
+            error: paymentResult.error 
+          });
+        }
+      }
+
+      // Create order with payment info
       const order = await storage.createOrder({
         ...orderData,
         affiliateId,
+        status: paymentResult?.success ? 'paid' : 'pending',
+        paymentId: paymentResult?.chargeId || null,
+        paymentProvider: paymentResult ? 'clover' : null,
       });
 
-      // Create order items
+      // Create order items and collect product names for email
+      const orderItemsForEmail = [];
       for (const item of items) {
         await storage.createOrderItem({
           orderId: order.id,
@@ -111,6 +148,16 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
           quantity: item.quantity,
           price: item.price,
         });
+        
+        // Get product name for email
+        const product = await storage.getProduct(item.productId);
+        if (product) {
+          orderItemsForEmail.push({
+            name: product.name,
+            quantity: item.quantity,
+            price: item.price,
+          });
+        }
       }
 
       // If affiliate, create affiliate sale
@@ -123,7 +170,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
             affiliateId,
             orderId: order.id,
             commission: commission.toFixed(2),
-            status: 'pending',
+            status: paymentResult?.success ? 'confirmed' : 'pending',
           });
 
           // Update affiliate stats
@@ -133,6 +180,40 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
           });
         }
       }
+
+      // Send order confirmation emails (async, don't block response)
+      const emailData = {
+        orderId: order.id,
+        customerEmail: orderData.email,
+        customerName: orderData.shippingName,
+        items: orderItemsForEmail,
+        total: orderData.total,
+        shippingAddress: {
+          name: orderData.shippingName,
+          address: orderData.shippingAddress,
+          city: orderData.shippingCity,
+          state: orderData.shippingState,
+          zip: orderData.shippingZip,
+        },
+        affiliateCode: affiliateCodeUsed,
+      };
+
+      // Send emails in background
+      sendOrderConfirmation(emailData).catch(err => 
+        console.error('Failed to send order confirmation:', err)
+      );
+      
+      sendStoreNotification({
+        orderId: order.id,
+        customerEmail: orderData.email,
+        customerName: orderData.shippingName,
+        total: orderData.total,
+        itemCount: items.length,
+        hasAffiliate: !!affiliateId,
+        affiliateCode: affiliateCodeUsed || undefined,
+      }).catch(err => 
+        console.error('Failed to send store notification:', err)
+      );
 
       res.status(201).json(order);
     } catch (error) {

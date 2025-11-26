@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Loader2, DollarSign, Users, TrendingUp, Check } from "lucide-react";
+import { SEO, seoPresets } from "@/components/SEO";
 import type { Affiliate } from "@shared/schema";
 
 export default function AffiliateSignup() {
@@ -80,6 +81,7 @@ export default function AffiliateSignup() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <SEO {...seoPresets.affiliateSignup} />
       <Header />
       
       <main className="flex-1 py-12">

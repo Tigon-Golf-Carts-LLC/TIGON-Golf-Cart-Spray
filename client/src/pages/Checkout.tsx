@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,13 +9,34 @@ import { Footer } from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { Loader2, Lock } from "lucide-react";
-import { useMutation } from "@tanstack/react-query";
+import { Loader2, Lock, CreditCard, ShieldCheck, AlertCircle } from "lucide-react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { SEO, seoPresets } from "@/components/SEO";
+
+interface CloverConfig {
+  configured: boolean;
+  publicToken: string;
+  merchantId: string;
+  sdkUrl: string;
+  environment: string;
+}
+
+declare global {
+  interface Window {
+    Clover: any;
+  }
+}
 
 export default function Checkout() {
   const [, navigate] = useLocation();
   const { items, totalPrice, clearCart } = useCart();
   const { toast } = useToast();
+  const [paymentToken, setPaymentToken] = useState<string | null>(null);
+  const [cardError, setCardError] = useState<string | null>(null);
+  const [cloverReady, setCloverReady] = useState(false);
+  const cloverRef = useRef<any>(null);
+  const elementsRef = useRef<any>(null);
+  
   const [formData, setFormData] = useState({
     email: "",
     shippingName: "",
@@ -25,11 +46,146 @@ export default function Checkout() {
     shippingZip: "",
   });
 
+  // Fetch Clover configuration
+  const { data: cloverConfig } = useQuery<CloverConfig>({
+    queryKey: ['/api/config/payment'],
+  });
+
+  // Load Clover SDK when configured
+  useEffect(() => {
+    if (!cloverConfig?.configured) return;
+
+    const existingScript = document.getElementById('clover-sdk');
+    if (existingScript) {
+      if (window.Clover) {
+        initializeClover();
+      }
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.id = 'clover-sdk';
+    script.src = cloverConfig.sdkUrl;
+    script.async = true;
+    script.onload = () => {
+      initializeClover();
+    };
+    script.onerror = () => {
+      console.error('Failed to load Clover SDK');
+      setCardError('Failed to load payment system');
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup - don't remove script as it might be used elsewhere
+    };
+  }, [cloverConfig]);
+
+  const initializeClover = useCallback(() => {
+    if (!cloverConfig?.configured || !window.Clover) return;
+
+    try {
+      cloverRef.current = new window.Clover(cloverConfig.publicToken, {
+        merchantId: cloverConfig.merchantId,
+      });
+
+      const elements = cloverRef.current.elements();
+      elementsRef.current = elements;
+
+      // Create card elements
+      const cardNumber = elements.create('CARD_NUMBER', {
+        placeholder: 'Card number',
+        style: {
+          base: {
+            fontSize: '16px',
+            color: 'inherit',
+            '::placeholder': {
+              color: '#888',
+            },
+          },
+        },
+      });
+      const cardDate = elements.create('CARD_DATE', {
+        placeholder: 'MM/YY',
+        style: {
+          base: {
+            fontSize: '16px',
+            color: 'inherit',
+          },
+        },
+      });
+      const cardCvv = elements.create('CARD_CVV', {
+        placeholder: 'CVV',
+        style: {
+          base: {
+            fontSize: '16px',
+            color: 'inherit',
+          },
+        },
+      });
+      const cardPostalCode = elements.create('CARD_POSTAL_CODE', {
+        placeholder: 'ZIP',
+        style: {
+          base: {
+            fontSize: '16px',
+            color: 'inherit',
+          },
+        },
+      });
+
+      // Mount elements
+      const cardNumberEl = document.getElementById('clover-card-number');
+      const cardDateEl = document.getElementById('clover-card-date');
+      const cardCvvEl = document.getElementById('clover-card-cvv');
+      const cardPostalEl = document.getElementById('clover-card-postal');
+
+      if (cardNumberEl && cardDateEl && cardCvvEl && cardPostalEl) {
+        cardNumber.mount('#clover-card-number');
+        cardDate.mount('#clover-card-date');
+        cardCvv.mount('#clover-card-cvv');
+        cardPostalCode.mount('#clover-card-postal');
+        setCloverReady(true);
+      }
+    } catch (error) {
+      console.error('Clover initialization error:', error);
+      setCardError('Failed to initialize payment form');
+    }
+  }, [cloverConfig]);
+
+  const tokenizeCard = async (): Promise<string | null> => {
+    if (!cloverRef.current || !cloverReady) {
+      return null;
+    }
+
+    try {
+      setCardError(null);
+      const result = await cloverRef.current.createToken();
+      
+      if (result.errors) {
+        const errorMessages = Object.values(result.errors).join(', ');
+        setCardError(errorMessages || 'Card validation failed');
+        return null;
+      }
+      
+      if (result.token) {
+        return result.token;
+      }
+      
+      setCardError('Failed to process card');
+      return null;
+    } catch (error: any) {
+      console.error('Tokenization error:', error);
+      setCardError(error.message || 'Card processing error');
+      return null;
+    }
+  };
+
   const createOrderMutation = useMutation({
-    mutationFn: async (data: typeof formData) => {
+    mutationFn: async (data: typeof formData & { paymentToken?: string }) => {
       return await apiRequest("POST", "/api/orders", {
         ...data,
         total: totalPrice.toFixed(2),
+        paymentToken: data.paymentToken,
         items: items.map(item => ({
           productId: item.product.id,
           quantity: item.quantity,
@@ -54,9 +210,36 @@ export default function Checkout() {
     },
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    createOrderMutation.mutate(formData);
+    
+    // Validate form
+    if (!formData.email || !formData.shippingName || !formData.shippingAddress || 
+        !formData.shippingCity || !formData.shippingState || !formData.shippingZip) {
+      toast({
+        title: "Please fill in all fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    let token: string | undefined;
+    
+    // Tokenize card if Clover is configured
+    if (cloverConfig?.configured && cloverReady) {
+      const cardToken = await tokenizeCard();
+      if (!cardToken) {
+        toast({
+          title: "Payment Error",
+          description: cardError || "Please check your card details",
+          variant: "destructive",
+        });
+        return;
+      }
+      token = cardToken;
+    }
+
+    createOrderMutation.mutate({ ...formData, paymentToken: token });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,6 +256,7 @@ export default function Checkout() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <SEO {...seoPresets.checkout} />
       <Header />
       
       <main className="flex-1 py-12">
@@ -172,19 +356,79 @@ export default function Checkout() {
                   </CardContent>
                 </Card>
 
-                {/* Payment Note */}
+                {/* Payment Information */}
                 <Card>
                   <CardContent className="p-6">
-                    <div className="flex items-start gap-3">
-                      <Lock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                      <div>
-                        <h3 className="font-semibold mb-1">Secure Payment</h3>
-                        <p className="text-sm text-muted-foreground">
-                          Payment processing will be integrated in the next phase. 
-                          For now, your order will be recorded and you'll receive confirmation via email.
-                        </p>
-                      </div>
+                    <div className="flex items-center gap-2 mb-4">
+                      <CreditCard className="h-5 w-5 text-primary" />
+                      <h2 className="text-xl font-semibold">Payment</h2>
                     </div>
+
+                    {cloverConfig?.configured ? (
+                      <>
+                        {/* Clover Card Elements */}
+                        <div className="space-y-4">
+                          <div>
+                            <Label>Card Number</Label>
+                            <div 
+                              id="clover-card-number" 
+                              className="h-10 px-3 py-2 rounded-md border border-input bg-background"
+                              data-testid="input-card-number"
+                            />
+                          </div>
+                          <div className="grid grid-cols-3 gap-4">
+                            <div>
+                              <Label>Expiry</Label>
+                              <div 
+                                id="clover-card-date" 
+                                className="h-10 px-3 py-2 rounded-md border border-input bg-background"
+                                data-testid="input-card-expiry"
+                              />
+                            </div>
+                            <div>
+                              <Label>CVV</Label>
+                              <div 
+                                id="clover-card-cvv" 
+                                className="h-10 px-3 py-2 rounded-md border border-input bg-background"
+                                data-testid="input-card-cvv"
+                              />
+                            </div>
+                            <div>
+                              <Label>ZIP</Label>
+                              <div 
+                                id="clover-card-postal" 
+                                className="h-10 px-3 py-2 rounded-md border border-input bg-background"
+                                data-testid="input-card-zip"
+                              />
+                            </div>
+                          </div>
+                          
+                          {cardError && (
+                            <div className="flex items-center gap-2 text-destructive text-sm">
+                              <AlertCircle className="h-4 w-4" />
+                              <span data-testid="text-card-error">{cardError}</span>
+                            </div>
+                          )}
+
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground mt-4">
+                            <ShieldCheck className="h-4 w-4 text-primary" />
+                            <span>Payments are securely processed by Clover</span>
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="flex items-start gap-3">
+                        <Lock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <h3 className="font-semibold mb-1">Secure Payment</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Clover payment processing is being configured. 
+                            Your order will be recorded and you'll receive confirmation via email.
+                            Payment will be collected upon order fulfillment.
+                          </p>
+                        </div>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
 
@@ -192,7 +436,7 @@ export default function Checkout() {
                   type="submit"
                   size="lg"
                   className="w-full"
-                  disabled={createOrderMutation.isPending}
+                  disabled={createOrderMutation.isPending || (cloverConfig?.configured && !cloverReady)}
                   data-testid="button-place-order"
                 >
                   {createOrderMutation.isPending ? (
@@ -201,7 +445,12 @@ export default function Checkout() {
                       Processing...
                     </>
                   ) : (
-                    <>Place Order</>
+                    <>
+                      <Lock className="mr-2 h-4 w-4" />
+                      {cloverConfig?.configured 
+                        ? `Pay $${totalPrice.toFixed(2)}` 
+                        : 'Place Order'}
+                    </>
                   )}
                 </Button>
               </form>
@@ -215,7 +464,7 @@ export default function Checkout() {
                   
                   <div className="space-y-3">
                     {items.map((item) => (
-                      <div key={item.product.id} className="flex gap-3">
+                      <div key={item.product.id} className="flex gap-3" data-testid={`cart-item-${item.product.id}`}>
                         <div className="w-16 h-16 rounded bg-muted overflow-hidden flex-shrink-0">
                           <img
                             src={item.product.imageUrl}

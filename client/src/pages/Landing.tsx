@@ -3,10 +3,12 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Leaf, Truck, Award } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO, seoPresets } from "@/components/SEO";
 
 export default function Landing() {
   return (
     <div className="flex min-h-screen flex-col">
+      <SEO {...seoPresets.home} />
       <Header />
       
       <main className="flex-1">

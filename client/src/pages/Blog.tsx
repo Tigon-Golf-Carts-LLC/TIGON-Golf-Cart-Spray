@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowRight } from "lucide-react";
+import { SEO, seoPresets } from "@/components/SEO";
 import type { BlogPost } from "@shared/schema";
 
 export default function Blog() {
@@ -17,6 +18,7 @@ export default function Blog() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <SEO {...seoPresets.blog} />
       <Header />
       
       <main className="flex-1 py-12">
@@ -63,9 +65,9 @@ export default function Blog() {
                         <p className="text-muted-foreground text-sm line-clamp-3 mb-4 flex-1">
                           {post.excerpt}
                         </p>
-                        <Button variant="link" className="p-0 h-auto justify-start">
+                        <span className="text-primary font-medium inline-flex items-center text-sm group-hover:underline">
                           Read More <ArrowRight className="ml-1 h-4 w-4" />
-                        </Button>
+                        </span>
                       </div>
                     </CardContent>
                   </Card>

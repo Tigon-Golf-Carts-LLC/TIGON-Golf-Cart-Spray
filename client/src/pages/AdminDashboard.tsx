@@ -18,6 +18,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import { SEO, seoPresets } from "@/components/SEO";
 import type { Order, Product, Affiliate, AffiliateSale } from "@shared/schema";
 
 export default function AdminDashboard() {
@@ -87,6 +88,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <SEO {...seoPresets.admin} />
       <Header />
       
       <main className="flex-1 py-12">

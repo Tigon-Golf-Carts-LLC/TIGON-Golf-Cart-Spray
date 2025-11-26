@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft, Calendar } from "lucide-react";
+import { SEO } from "@/components/SEO";
 import type { BlogPost } from "@shared/schema";
 
 export default function BlogPostPage() {
@@ -55,6 +56,26 @@ export default function BlogPostPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        canonical={`/blog/${post.slug}`}
+        type="article"
+        image={post.heroImage}
+        keywords={['golf cart cleaning', 'golf cart spray', post.category, 'golf cart maintenance']}
+        article={{
+          publishedTime: post.publishedAt ? new Date(post.publishedAt).toISOString() : undefined,
+          modifiedTime: post.publishedAt ? new Date(post.publishedAt).toISOString() : undefined,
+          author: 'TIGON Spray',
+          section: post.category,
+          tags: ['golf cart', 'cleaning tips', 'maintenance'],
+        }}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Blog', url: '/blog' },
+          { name: post.title, url: `/blog/${post.slug}` },
+        ]}
+      />
       <Header />
       
       <main className="flex-1 py-12">
