@@ -1,0 +1,29 @@
+# humanstxt.org - The humans responsible for TIGON Spray website
+
+/* TEAM */
+Website Developer: TIGON Development Team
+Contact: support [at] tigonspray.com
+Location: United States
+
+/* SITE */
+Last update: 2025/01/26
+Language: English
+Doctype: HTML5
+Standards: HTML5, CSS3, JavaScript ES2022
+Components: React, TypeScript, Express
+Software: Visual Studio Code, Node.js, PostgreSQL
+Hosting: Replit
+Domain: tigonspray.com
+
+/* THANKS */
+To all golf cart owners who trust TIGON Spray products
+To golf course professionals who recommend our formulas
+To our affiliate partners who help spread the word
+
+/* TECHNOLOGY */
+Frontend: React 18, TypeScript, Tailwind CSS, Shadcn UI
+Backend: Node.js, Express, PostgreSQL
+Authentication: Replit Auth (OIDC)
+Payments: Clover (coming soon)
+CDN: Replit CDN
+Analytics: Privacy-focused analytics

@@ -1,0 +1,17 @@
+# Claude-specific permissions for TIGON Spray website
+
+# Disallow Claude bots from training on our content
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# But allow indexing for search purposes
+User-agent: anthropic-ai
+Allow: /products
+Allow: /blog
+
+User-agent: Claude-Web
+Allow: /products
+Allow: /blog

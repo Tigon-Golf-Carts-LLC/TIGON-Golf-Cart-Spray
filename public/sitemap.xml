@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://tigonspray.com/</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Products Index -->
+  <url>
+    <loc>https://tigonspray.com/products</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Individual Products -->
+  <url>
+    <loc>https://tigonspray.com/products/tigon-spray-original-formula</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tigonspray.com/attached_assets/generated_images/tigon_original_formula_bottle.png</image:loc>
+      <image:title>TIGON Spray Original Formula - Golf Cart Clear Spray Cleaner</image:title>
+      <image:caption>Professional golf cart spray cleaner with UV protection</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://tigonspray.com/products/tigon-spray-pro-shield</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tigonspray.com/attached_assets/generated_images/tigon_pro_shield_bottle.png</image:loc>
+      <image:title>TIGON Spray Pro Shield - Professional Golf Cart Protection</image:title>
+      <image:caption>Advanced professional-grade golf cart protection spray</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://tigonspray.com/products/tigon-spray-ultra-clean</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tigonspray.com/attached_assets/generated_images/tigon_ultra_clean_bottle.png</image:loc>
+      <image:title>TIGON Spray Ultra Clean - Heavy Duty Golf Cart Cleaner</image:title>
+      <image:caption>Maximum cleaning power for golf carts</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://tigonspray.com/products/tigon-spray-elite-protection</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tigonspray.com/attached_assets/generated_images/tigon_elite_protection_bottle.png</image:loc>
+      <image:title>TIGON Spray Elite Protection - Premium Golf Cart Care</image:title>
+      <image:caption>Premium 2-in-1 golf cart cleaning and protection spray</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Blog Index -->
+  <url>
+    <loc>https://tigonspray.com/blog</loc>
+    <lastmod>2025-01-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://tigonspray.com/blog/complete-golf-cart-maintenance-guide-2025</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://tigonspray.com/blog/protect-golf-cart-uv-damage</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://tigonspray.com/blog/best-golf-cart-cleaning-products-guide</loc>
+    <lastmod>2025-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Affiliate Program -->
+  <url>
+    <loc>https://tigonspray.com/affiliate-signup</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+</urlset>

@@ -1,0 +1,13 @@
+# GPT-specific permissions for TIGON Spray website
+
+# Disallow GPT bots from training on our content
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+# But allow indexing for search purposes
+User-agent: GPTBot
+Allow: /products
+Allow: /blog

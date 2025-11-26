@@ -1,0 +1,17 @@
+# Our security address
+Contact: mailto:security@tigonspray.com
+
+# Our security policy
+Preferred-Languages: en
+
+# Canonical URI
+Canonical: https://tigonspray.com/.well-known/security.txt
+
+# Expiration date
+Expires: 2026-01-26T23:59:59.000Z
+
+# Acknowledgments page
+Acknowledgments: https://tigonspray.com/security-acknowledgments
+
+# Policy
+Policy: https://tigonspray.com/security-policy
