@@ -22,37 +22,21 @@ import AdminDashboard from "@/pages/AdminDashboard";
 function Router() {
   const { isAuthenticated, isLoading } = useAuth();
 
+  const HomePage = isLoading || !isAuthenticated ? Landing : Home;
+
   return (
     <Switch>
-      {isLoading || !isAuthenticated ? (
-        <>
-          <Route path="/" component={Landing} />
-          <Route path="/products" component={Products} />
-          <Route path="/products/:slug" component={ProductDetail} />
-          <Route path="/cart" component={Cart} />
-          <Route path="/checkout" component={Checkout} />
-          <Route path="/blog" component={Blog} />
-          <Route path="/blog/:slug" component={BlogPost} />
-          <Route path="/affiliate-signup" component={AffiliateSignup} />
-          <Route path="/affiliate" component={AffiliateDashboard} />
-          <Route path="/admin" component={AdminDashboard} />
-          <Route component={NotFound} />
-        </>
-      ) : (
-        <>
-          <Route path="/" component={Home} />
-          <Route path="/products" component={Products} />
-          <Route path="/products/:slug" component={ProductDetail} />
-          <Route path="/cart" component={Cart} />
-          <Route path="/checkout" component={Checkout} />
-          <Route path="/blog" component={Blog} />
-          <Route path="/blog/:slug" component={BlogPost} />
-          <Route path="/affiliate-signup" component={AffiliateSignup} />
-          <Route path="/affiliate" component={AffiliateDashboard} />
-          <Route path="/admin" component={AdminDashboard} />
-          <Route component={NotFound} />
-        </>
-      )}
+      <Route path="/" component={HomePage} />
+      <Route path="/products" component={Products} />
+      <Route path="/products/:slug" component={ProductDetail} />
+      <Route path="/cart" component={Cart} />
+      <Route path="/checkout" component={Checkout} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={BlogPost} />
+      <Route path="/affiliate-signup" component={AffiliateSignup} />
+      <Route path="/affiliate" component={AffiliateDashboard} />
+      <Route path="/admin" component={AdminDashboard} />
+      <Route component={NotFound} />
     </Switch>
   );
 }
