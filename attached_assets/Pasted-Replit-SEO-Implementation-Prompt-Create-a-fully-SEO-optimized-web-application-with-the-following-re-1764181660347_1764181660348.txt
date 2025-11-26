@@ -1,0 +1,68 @@
+Replit SEO Implementation Prompt
+Create a fully SEO-optimized web application with the following requirements:
+Server-Side Rendering & Crawlability
+Implement server-side rendering (SSR) to ensure all content is crawlable by search engines
+Generate complete HTML on the server before sending to the client
+Ensure JavaScript-dependent content is pre-rendered
+Use a framework that supports SSR (Next.js, Nuxt.js, SvelteKit, or similar)
+Semantic HTML & Schema Markup
+Use proper semantic HTML5 elements (<header>, <nav>, <main>, <article>, <section>, <aside>, <footer>)
+Implement JSON-LD schema markup for all relevant content types (e.g., Organization, WebSite, Article, Product, etc.)
+Include structured data that matches the page content
+Validate schema markup for proper implementation
+Canonical URL Configuration
+CRITICAL: Set the canonical URL to the custom domain, NOT the replit.app URL
+Add <link rel="canonical" href="https://yourdomain.com/page-path"> to all pages
+Ensure canonical URLs use the production domain across all environments
+Implement 301 redirects from replit.app URLs to the custom domain if applicable
+Static Asset URLs
+All meta tags and images must use absolute, static URLs from your custom domain:
+Meta Tags
+<title> - Unique, descriptive title for each page
+<meta name="description"> - Compelling description (150-160 characters)
+<meta name="keywords"> - Relevant keywords
+<link rel="icon" href="https://yourdomain.com/favicon.ico">
+<link rel="apple-touch-icon" href="https://yourdomain.com/apple-touch-icon.png">
+Social Media / Open Graph Tags
+<meta property="og:title" content="Your Page Title">
+<meta property="og:description" content="Your page description">
+<meta property="og:image" content="https://yourdomain.com/og-image.jpg">
+<meta property="og:url" content="https://yourdomain.com/page-path">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Your Site Name">
+
+Twitter Card Tags
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your Page Title">
+<meta name="twitter:description" content="Your page description">
+<meta name="twitter:image" content="https://yourdomain.com/twitter-image.jpg">
+
+Image Requirements
+All images must be hosted on the custom domain with static paths
+Use absolute URLs for all images: https://yourdomain.com/images/example.jpg
+Include alt text on all images for accessibility and SEO
+Optimize images for web (WebP format preferred, with fallbacks)
+Ensure OG images are at least 1200x630px
+Ensure favicon.ico and apple-touch-icon.png are in the public/static directory
+Additional SEO Best Practices
+Generate a sitemap.xml at /sitemap.xml
+Create a robots.txt file allowing all crawlers
+Implement proper heading hierarchy (H1, H2, H3, etc.)
+Ensure mobile responsiveness and fast loading times
+Add lang attribute to <html> tag (e.g., <html lang="en">)
+Include viewport meta tag: <meta name="viewport" content="width=device-width, initial-scale=1">
+Environment Variables Setup
+Create a .env file with:
+CANONICAL_DOMAIN=https://yourdomain.com
+REPLIT_DOMAIN=https://yourproject.replit.app
+
+Ensure all URL generation uses CANONICAL_DOMAIN for meta tags and canonical links.
+Testing Checklist
+[ ] View page source to confirm SSR is working (content visible without JavaScript)
+[ ] Verify canonical URLs point to custom domain
+[ ] Check all image URLs are absolute and use custom domain
+[ ] Validate schema markup using Google's Rich Results Test
+[ ] Test Open Graph tags using Facebook Sharing Debugger
+[ ] Test Twitter Cards using Twitter Card Validator
+[ ] Confirm no replit.app URLs in meta tags or canonical links
+
