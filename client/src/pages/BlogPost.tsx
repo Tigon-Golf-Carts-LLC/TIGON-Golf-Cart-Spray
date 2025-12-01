@@ -6,6 +6,8 @@ import { Footer } from "@/components/Footer";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft, Calendar } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type { BlogPost } from "@shared/schema";
 
 export default function BlogPostPage() {
@@ -111,22 +113,30 @@ export default function BlogPostPage() {
             <div className="aspect-video overflow-hidden rounded-lg bg-muted mb-8">
               <img
                 src={post.heroImage}
-                alt={post.title}
+                alt={post.heroImageAlt || post.title}
                 className="h-full w-full object-cover"
                 data-testid="img-hero"
               />
             </div>
 
-            {/* Post Content */}
-            <div className="prose prose-lg max-w-none dark:prose-invert" data-testid="text-content">
-              {post.content.split('\n').map((paragraph, index) => (
-                paragraph.trim() && (
-                  <p key={index} className="mb-4">
-                    {paragraph}
-                  </p>
-                )
-              ))}
-            </div>
+            {/* Post Content - Rendered with Markdown */}
+            <article 
+              className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3 prose-h4:text-lg prose-h4:mt-4 prose-h4:mb-2 prose-p:mb-4 prose-ul:my-4 prose-li:my-1 prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground" 
+              data-testid="text-content"
+            >
+              <ReactMarkdown 
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  a: ({ href, children }) => (
+                    <Link href={href || '#'} className="text-primary hover:underline">
+                      {children}
+                    </Link>
+                  ),
+                }}
+              >
+                {post.content}
+              </ReactMarkdown>
+            </article>
 
             {/* Related Products CTA */}
             <div className="mt-12 p-8 bg-card rounded-lg border">

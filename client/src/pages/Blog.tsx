@@ -5,9 +5,19 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
 import { SEO, seoPresets } from "@/components/SEO";
 import type { BlogPost } from "@shared/schema";
+
+function formatDate(date: Date | string | null) {
+  if (!date) return '';
+  const d = new Date(date);
+  return d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
 
 export default function Blog() {
   const { data: posts, isLoading } = useQuery<BlogPost[]>({
@@ -47,7 +57,7 @@ export default function Blog() {
                       <div className="aspect-video overflow-hidden rounded-t-lg bg-muted">
                         <img
                           src={post.heroImage}
-                          alt={post.title}
+                          alt={post.heroImageAlt || post.title}
                           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                           data-testid={`img-blog-post-${post.id}`}
                         />
@@ -55,13 +65,14 @@ export default function Blog() {
                       <div className="p-6 flex-1 flex flex-col">
                         <div className="flex items-center gap-2 mb-3">
                           <span className="text-xs font-semibold text-primary uppercase">{post.category}</span>
-                          <span className="text-xs text-muted-foreground">
-                            {new Date(post.publishedAt!).toLocaleDateString()}
+                          <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <Calendar className="h-3 w-3" />
+                            {formatDate(post.publishedAt)}
                           </span>
                         </div>
-                        <h3 className="text-xl font-semibold mb-3 line-clamp-2" data-testid={`text-blog-title-${post.id}`}>
+                        <h2 className="text-xl font-semibold mb-3 line-clamp-2" data-testid={`text-blog-title-${post.id}`}>
                           {post.title}
-                        </h3>
+                        </h2>
                         <p className="text-muted-foreground text-sm line-clamp-3 mb-4 flex-1">
                           {post.excerpt}
                         </p>
