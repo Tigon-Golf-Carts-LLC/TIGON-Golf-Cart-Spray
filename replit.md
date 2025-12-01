@@ -2,7 +2,7 @@
 
 ## Overview
 
-TIGON Spray is a direct-to-consumer e-commerce platform specializing in premium golf cart cleaning and protection products. The platform sells four spray variants (Original Formula, Pro Shield, Ultra Clean, and Elite Protection) with prices ranging from $24.99 to $44.99. The application features a modern shopping experience with product browsing, cart management, checkout, blog content, and an affiliate marketing program.
+TIGON Spray is a direct-to-consumer e-commerce platform specializing in premium golf cart cleaning and protection products. The platform sells three scented cleaners at $10 each (Lemon Seat Cleaner, Grape Body Cleaner, Watermelon Vinyl Coating), a 12-Pack Bundle at $99, and features an "Upcoming Scents" waitlist section with 7 new variants. The application includes $25 flat-rate nationwide shipping, comprehensive shopping experience with cart management, checkout, a 31-post SEO blog system targeting "Golf Cart Spray Cleaner" rankings, and an affiliate marketing program.
 
 ## User Preferences
 
