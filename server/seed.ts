@@ -4,75 +4,80 @@ import type { InsertProduct, InsertBlogPost } from "@shared/schema";
 async function seed() {
   console.log("🌱 Starting database seed...");
 
-  // Create 4 TIGON Spray Products
+  // Create TIGON Spray Products - 3 Single Cans + 1 Bundle
   const products: InsertProduct[] = [
     {
-      name: "TIGON Spray Original Formula",
-      slug: "tigon-spray-original-formula",
-      description: "The original TIGON Spray formula provides superior protection and cleaning for your golf cart. Our proven blend removes dirt, grime, and buildup while creating a protective barrier against the elements.",
-      price: "24.99",
-      imageUrl: "/attached_assets/generated_images/tigon_original_formula_bottle.png",
+      name: "Lemon Scent Golf Cart Seat Cleaner",
+      slug: "lemon-scent-seat-cleaner",
+      description: "Professional-grade seat cleaner with a refreshing lemon scent. Specially formulated for golf cart seats, this powerful cleaner removes dirt, stains, and grime while leaving a pleasant citrus aroma. Safe for all seat materials including vinyl and leather.",
+      price: "10.00",
+      imageUrl: "/attached_assets/LEMON SCENT GOLF CART SEAT CLEANER_1764608944764.jpg",
       features: [
-        "Fast-acting spray formula",
-        "Safe for all golf cart surfaces",
-        "UV protection coating",
-        "Easy application, no rinsing required",
-        "16 oz professional-grade bottle"
+        "Refreshing lemon scent",
+        "Deep cleaning formula for golf cart seats",
+        "Safe for vinyl and leather",
+        "Removes tough stains and grime",
+        "18 oz professional-grade can",
+        "Nationwide shipping - $25.00 flat rate"
       ],
-      specifications: "Size: 16 oz | pH Balanced | Biodegradable Formula | Made in USA",
+      specifications: "Size: 18 oz (1 LB 2 OZ / 510g) | Aerosol Spray | Made in USA | Flammable - Keep away from heat",
       inStock: true,
-      amazonUrl: "https://amazon.com/tigon-spray-original",
+      amazonUrl: null,
     },
     {
-      name: "TIGON Spray Pro Shield",
-      slug: "tigon-spray-pro-shield",
-      description: "Advanced professional-grade protection for demanding golf course conditions. Pro Shield offers enhanced durability and extended protection for golf carts exposed to harsh weather and frequent use.",
-      price: "34.99",
-      imageUrl: "/attached_assets/generated_images/tigon_pro_shield_bottle.png",
+      name: "Grape Scent Golf Cart Body & Windshield Cleaner",
+      slug: "grape-scent-body-windshield-cleaner",
+      description: "Complete body and windshield cleaning solution with a delightful grape scent. Cuts through dirt, bugs, tree sap, and road grime on your golf cart's exterior surfaces. Crystal-clear streak-free finish on windshields.",
+      price: "10.00",
+      imageUrl: "/attached_assets/GRAPE SCENT GOLF CART BODY AND WINDSHIELD CLEANER_1764608944764.jpg",
       features: [
-        "Professional-grade formula",
-        "Extended UV protection",
-        "Water-resistant coating",
-        "Prevents oxidation and fading",
-        "20 oz commercial-strength bottle"
+        "Grape scented formula",
+        "Body and windshield cleaner",
+        "Streak-free windshield finish",
+        "Removes bugs, sap, and road grime",
+        "13.75 oz professional can",
+        "Nationwide shipping - $25.00 flat rate"
       ],
-      specifications: "Size: 20 oz | Commercial Grade | All-Weather Formula | Made in USA",
+      specifications: "Size: 13.75 oz (390g) | Aerosol Spray | Made in USA | Flammable - Keep away from heat",
       inStock: true,
-      amazonUrl: "https://amazon.com/tigon-spray-pro-shield",
+      amazonUrl: null,
     },
     {
-      name: "TIGON Spray Ultra Clean",
-      slug: "tigon-spray-ultra-clean",
-      description: "Maximum cleaning power for the toughest jobs. Ultra Clean's enhanced formula tackles stubborn stains, tree sap, bird droppings, and heavy oxidation while maintaining surface integrity.",
-      price: "29.99",
-      imageUrl: "/attached_assets/generated_images/tigon_ultra_clean_bottle.png",
+      name: "Watermelon Scent Golf Cart Vinyl & Plastic Coating",
+      slug: "watermelon-scent-vinyl-plastic-coating",
+      description: "Premium vinyl and plastic coating with a sweet watermelon scent. Protects and restores the shine on all vinyl and plastic surfaces of your golf cart. Provides UV protection to prevent fading and cracking.",
+      price: "10.00",
+      imageUrl: "/attached_assets/WATERMELON SCENT GOLF CART VINYL & PLASTIC COATING_1764608944764.jpg",
       features: [
-        "Maximum cleaning strength",
-        "Removes tough stains and oxidation",
-        "Deep cleaning action",
-        "Safe for plastics and vinyl",
-        "18 oz heavy-duty formula"
+        "Sweet watermelon scent",
+        "Vinyl and plastic protective coating",
+        "Restores original shine",
+        "UV protection prevents fading",
+        "12 oz professional can",
+        "Nationwide shipping - $25.00 flat rate"
       ],
-      specifications: "Size: 18 oz | Heavy-Duty Cleaner | Safe for All Surfaces | Made in USA",
+      specifications: "Size: 12 oz (340g) | Aerosol Spray | Made in USA | Flammable - Keep away from heat",
       inStock: true,
-      amazonUrl: "https://amazon.com/tigon-spray-ultra-clean",
+      amazonUrl: null,
     },
     {
-      name: "TIGON Spray Elite Protection",
-      slug: "tigon-spray-elite-protection",
-      description: "Our premium flagship formula combining cleaning and protection in one superior product. Elite Protection delivers showroom-quality results with long-lasting shine and unmatched durability.",
-      price: "44.99",
-      imageUrl: "/attached_assets/generated_images/tigon_elite_protection_bottle.png",
+      name: "9 Pack Bundle - Complete Golf Cart Cleaning Kit",
+      slug: "9-pack-bundle-complete-kit",
+      description: "The ultimate golf cart cleaning bundle! Get all three TIGON cleaners - 3 Lemon Scent Seat Cleaners, 3 Grape Scent Body & Windshield Cleaners, and 3 Watermelon Scent Vinyl & Plastic Coatings. Everything you need to keep your golf cart looking showroom new.",
+      price: "99.00",
+      imageUrl: "/attached_assets/12 PACK BUNDLE OF GOLF CART CLEANERS_1764608944764.jpg",
       features: [
-        "Premium 2-in-1 formula",
-        "Showroom-quality shine",
-        "Maximum UV protection",
-        "Hydrophobic water-repelling coat",
-        "24 oz professional formula"
+        "9 cans total - 3 of each cleaner",
+        "3x Lemon Scent Seat Cleaner",
+        "3x Grape Scent Body & Windshield Cleaner",
+        "3x Watermelon Scent Vinyl & Plastic Coating",
+        "Complete cleaning solution for your golf cart",
+        "Best value - Save over 30%",
+        "Nationwide shipping - $25.00 flat rate"
       ],
-      specifications: "Size: 24 oz | Premium Formula | Extended Protection | Made in USA",
+      specifications: "Bundle includes: 3x 18 oz Seat Cleaner + 3x 13.75 oz Body Cleaner + 3x 12 oz Vinyl Coating | Made in USA",
       inStock: true,
-      amazonUrl: "https://amazon.com/tigon-spray-elite-protection",
+      amazonUrl: null,
     },
   ];
 
@@ -130,11 +135,11 @@ The best defense against UV damage is prevention. Store your cart in a covered a
 
 ## Protective Coatings
 
-Regular application of UV-protective sprays creates a barrier that reflects harmful rays. Products like TIGON Spray Pro Shield contain UV inhibitors that actively protect your cart's surfaces.
+Regular application of UV-protective sprays creates a barrier that reflects harmful rays. Products like TIGON Spray Vinyl & Plastic Coating contain UV inhibitors that actively protect your cart's surfaces.
 
 ## Restoration Techniques
 
-If UV damage has already occurred, don't despair. Many surfaces can be restored with proper cleaning and treatment. Start with a deep clean using TIGON Spray Ultra Clean, then protect with a premium formula.
+If UV damage has already occurred, don't despair. Many surfaces can be restored with proper cleaning and treatment. Start with a deep clean using TIGON Body & Windshield Cleaner, then protect with our vinyl coating.
 
 ## Ongoing Maintenance
 
@@ -156,19 +161,19 @@ Quality golf cart cleaners should be pH-balanced to protect surfaces, powerful e
 
 ## Formula Types
 
-Spray formulas offer convenience and precise application. They're ideal for regular maintenance and spot cleaning. Concentrate formulas provide economy for large fleets or frequent use.
+Aerosol formulas offer convenience and precise application. They're ideal for regular maintenance and spot cleaning. Our TIGON product line includes specialized cleaners for different surfaces - seats, body, windshield, and vinyl/plastic.
 
 ## Safety Considerations
 
-Always choose products that are safe for all golf cart surfaces. Harsh chemicals can damage seats, dashboards, and painted surfaces. Look for biodegradable formulas that are environmentally responsible.
+Always choose products that are safe for all golf cart surfaces. Harsh chemicals can damage seats, dashboards, and painted surfaces. Look for formulas that are designed specifically for golf cart materials.
 
 ## Application Methods
 
-Different cleaning tasks require different approaches. For general maintenance, spray-and-wipe products like TIGON Spray Original Formula work perfectly. For heavy-duty jobs, choose a more aggressive formula like Ultra Clean.
+Different cleaning tasks require different products. For seats, use our Lemon Scent Seat Cleaner. For body and windshields, the Grape Scent Body & Windshield Cleaner works perfectly. For vinyl and plastic surfaces, our Watermelon Scent Vinyl & Plastic Coating provides cleaning and protection.
 
-## Storage and Shelf Life
+## Best Value
 
-Store cleaning products in a cool, dry place away from direct sunlight. Most quality formulas have a shelf life of 2-3 years when properly stored.`,
+For the best value, consider our 9 Pack Bundle which includes 3 of each cleaner - giving you a complete cleaning solution at over 30% savings compared to buying individually.`,
       heroImage: "/attached_assets/generated_images/blog-buyers-guide.png",
       category: "Product Reviews",
       published: true,
