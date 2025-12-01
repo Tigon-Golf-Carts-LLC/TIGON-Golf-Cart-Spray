@@ -27,7 +27,7 @@ export default function Landing() {
             <div className="max-w-3xl mx-auto text-center space-y-8">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight" data-testid="text-hero-title">
                 Premium Golf Cart <br />
-                <span className="text-primary">Clear Spray Protection</span>
+                <span className="text-primary">Cleaner Spray & Protection</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto" data-testid="text-hero-subtitle">
                 Professional-grade cleaning and protection solutions for golf cart maintenance. 
