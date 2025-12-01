@@ -51,10 +51,27 @@ export const products = pgTable("products", {
   features: text("features").array().notNull().default(sql`ARRAY[]::text[]`),
   specifications: text("specifications").notNull(),
   inStock: boolean("in_stock").default(true).notNull(),
+  isUpcoming: boolean("is_upcoming").default(false).notNull(),
   amazonUrl: varchar("amazon_url"),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
+
+// Backorder Emails table - for upcoming product notifications
+export const backorderEmails = pgTable("backorder_emails", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  productId: varchar("product_id").references(() => products.id).notNull(),
+  email: varchar("email").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertBackorderEmailSchema = createInsertSchema(backorderEmails).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertBackorderEmail = z.infer<typeof insertBackorderEmailSchema>;
+export type BackorderEmail = typeof backorderEmails.$inferSelect;
 
 export const insertProductSchema = createInsertSchema(products).omit({
   id: true,
