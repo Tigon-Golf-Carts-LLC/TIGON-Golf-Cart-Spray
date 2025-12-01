@@ -7,9 +7,115 @@ import { fromZodError } from "zod-validation-error";
 import { getCloverPublicConfig, isCloverConfigured, createCharge } from "./clover";
 import { sendOrderConfirmation, sendStoreNotification, isEmailConfigured } from "./email";
 
+const SITE_URL = 'https://tigonspray.com';
+
+// XML escape utility for sitemap generation
+function escapeXml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
 export async function registerRoutes(httpServer: Server, app: Express): Promise<Server> {
   // Auth middleware
   await setupAuth(app);
+
+  // Dynamic Sitemap Generation
+  app.get('/sitemap.xml', async (req, res) => {
+    try {
+      const products = await storage.getAllProducts();
+      const blogPosts = await storage.getPublishedBlogPosts();
+      const today = new Date().toISOString().split('T')[0];
+
+      // Static pages with priorities
+      const staticPages = [
+        { url: '/', priority: '1.0', changefreq: 'daily' },
+        { url: '/products', priority: '0.9', changefreq: 'daily' },
+        { url: '/blog', priority: '0.8', changefreq: 'daily' },
+        { url: '/contact', priority: '0.6', changefreq: 'monthly' },
+        { url: '/about', priority: '0.6', changefreq: 'monthly' },
+        { url: '/affiliate', priority: '0.7', changefreq: 'monthly' },
+      ];
+
+      let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+`;
+
+      // Add static pages
+      for (const page of staticPages) {
+        sitemap += `  <url>
+    <loc>${SITE_URL}${page.url}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>
+`;
+      }
+
+      // Add product pages with images
+      for (const product of products) {
+        const productUrl = `${SITE_URL}/products/${escapeXml(product.slug)}`;
+        sitemap += `  <url>
+    <loc>${productUrl}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>`;
+        
+        if (product.imageUrl) {
+          const imageUrl = product.imageUrl.startsWith('http') 
+            ? escapeXml(product.imageUrl) 
+            : escapeXml(SITE_URL + product.imageUrl);
+          sitemap += `
+    <image:image>
+      <image:loc>${imageUrl}</image:loc>
+      <image:title>${escapeXml(product.name)} - Golf Cart Spray Cleaner</image:title>
+      <image:caption>${escapeXml(product.description || product.name)}</image:caption>
+    </image:image>`;
+        }
+        
+        sitemap += `
+  </url>
+`;
+      }
+
+      // Add blog posts with images
+      for (const post of blogPosts) {
+        const postUrl = `${SITE_URL}/blog/${escapeXml(post.slug)}`;
+        sitemap += `  <url>
+    <loc>${postUrl}</loc>
+    <lastmod>${post.createdAt ? new Date(post.createdAt).toISOString().split('T')[0] : today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>`;
+        
+        if (post.heroImage) {
+          const heroImageUrl = post.heroImage.startsWith('http')
+            ? escapeXml(post.heroImage)
+            : escapeXml(SITE_URL + post.heroImage);
+          sitemap += `
+    <image:image>
+      <image:loc>${heroImageUrl}</image:loc>
+      <image:title>${escapeXml(post.title)}</image:title>
+    </image:image>`;
+        }
+        
+        sitemap += `
+  </url>
+`;
+      }
+
+      sitemap += `</urlset>`;
+
+      res.set('Content-Type', 'application/xml');
+      res.send(sitemap);
+    } catch (error) {
+      console.error("Error generating sitemap:", error);
+      res.status(500).send('Error generating sitemap');
+    }
+  });
 
   // Payment Configuration
   app.get('/api/config/payment', (req, res) => {
