@@ -61,21 +61,21 @@ async function seed() {
       amazonUrl: null,
     },
     {
-      name: "9 Pack Bundle - Complete Golf Cart Cleaning Kit",
-      slug: "9-pack-bundle-complete-kit",
-      description: "The ultimate golf cart cleaning bundle! Get all three TIGON cleaners - 3 Lemon Scent Seat Cleaners, 3 Grape Scent Body & Windshield Cleaners, and 3 Watermelon Scent Vinyl & Plastic Coatings. Everything you need to keep your golf cart looking showroom new.",
+      name: "12 Pack Bundle - Complete Golf Cart Cleaning Kit",
+      slug: "12-pack-bundle-complete-kit",
+      description: "The ultimate golf cart cleaning bundle! Get all three TIGON cleaners - 4 Lemon Scent Seat Cleaners, 4 Grape Scent Body & Windshield Cleaners, and 4 Watermelon Scent Vinyl & Plastic Coatings. Everything you need to keep your golf cart looking showroom new.",
       price: "99.00",
       imageUrl: "/attached_assets/12 PACK BUNDLE OF GOLF CART CLEANERS_1764608944764.jpg",
       features: [
-        "9 cans total - 3 of each cleaner",
-        "3x Lemon Scent Seat Cleaner",
-        "3x Grape Scent Body & Windshield Cleaner",
-        "3x Watermelon Scent Vinyl & Plastic Coating",
+        "12 cans total - 4 of each cleaner",
+        "4x Lemon Scent Seat Cleaner",
+        "4x Grape Scent Body & Windshield Cleaner",
+        "4x Watermelon Scent Vinyl & Plastic Coating",
         "Complete cleaning solution for your golf cart",
-        "Best value - Save over 30%",
+        "Best value - Save over 15%",
         "Nationwide shipping - $25.00 flat rate"
       ],
-      specifications: "Bundle includes: 3x 18 oz Seat Cleaner + 3x 13.75 oz Body Cleaner + 3x 12 oz Vinyl Coating | Made in USA",
+      specifications: "Bundle includes: 4x 18 oz Seat Cleaner + 4x 13.75 oz Body Cleaner + 4x 12 oz Vinyl Coating | Made in USA",
       inStock: true,
       amazonUrl: null,
     },
@@ -173,7 +173,7 @@ Different cleaning tasks require different products. For seats, use our Lemon Sc
 
 ## Best Value
 
-For the best value, consider our 9 Pack Bundle which includes 3 of each cleaner - giving you a complete cleaning solution at over 30% savings compared to buying individually.`,
+For the best value, consider our 12 Pack Bundle which includes 4 of each cleaner - giving you a complete cleaning solution at great savings compared to buying individually.`,
       heroImage: "/attached_assets/generated_images/blog-buyers-guide.png",
       category: "Product Reviews",
       published: true,
