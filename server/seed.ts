@@ -4,6 +4,9 @@ import type { InsertProduct, InsertBlogPost } from "@shared/schema";
 async function seed() {
   console.log("🌱 Starting database seed...");
 
+  // Check if products already exist
+  const existingProducts = await storage.getAllProducts();
+  
   // Create TIGON Spray Products - 3 Single Cans + 1 Bundle
   const products: InsertProduct[] = [
     {
@@ -81,10 +84,14 @@ async function seed() {
     },
   ];
 
-  console.log("📦 Creating products...");
-  for (const product of products) {
-    await storage.createProduct(product);
-    console.log(`  ✓ Created product: ${product.name}`);
+  if (existingProducts.length === 0) {
+    console.log("📦 Creating products...");
+    for (const product of products) {
+      await storage.createProduct(product);
+      console.log(`  ✓ Created product: ${product.name}`);
+    }
+  } else {
+    console.log("📦 Products already exist, skipping...");
   }
 
   // Create SEO-optimized blog posts for all products
@@ -793,10 +800,18 @@ While Leather Scent is in development:
     },
   ];
 
-  console.log("📝 Creating blog posts...");
-  for (const post of blogPosts) {
-    await storage.createBlogPost(post);
-    console.log(`  ✓ Created blog post: ${post.title}`);
+  // Check if blog posts already exist
+  const existingPosts = await storage.getPublishedBlogPosts();
+  
+  if (existingPosts.length === 0) {
+    console.log("📝 Creating blog posts...");
+    for (const post of blogPosts) {
+      await storage.createBlogPost(post);
+      console.log(`  ✓ Created blog post: ${post.title}`);
+    }
+  } else {
+    console.log("📝 Blog posts already exist. To re-seed, delete existing posts first.");
+    console.log(`   Found ${existingPosts.length} existing posts`);
   }
 
   console.log("✅ Database seeding completed!");
