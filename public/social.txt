@@ -1,0 +1,130 @@
+# ===============================================================================
+# SOCIAL MEDIA BOT DATA - TIGON Spray
+# ===============================================================================
+# Website: https://tigonspray.com
+# Last Updated: 2025-01-26
+# 
+# FULL ACCESS FOR ALL SOCIAL MEDIA BOTS
+# ===============================================================================
+
+# SOCIAL MEDIA BOT ACCESS
+# -----------------------
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Snapchat
+Allow: /
+
+User-agent: Redditbot
+Allow: /
+
+# ===============================================================================
+# OPEN GRAPH DATA (FACEBOOK)
+# ===============================================================================
+
+og:site_name: TIGON Spray
+og:type: website
+og:locale: en_US
+og:title: TIGON Spray - Premium Golf Cart Spray Cleaner
+og:description: Professional golf cart cleaning and protection products. UV protection, pH-balanced, made in USA. Free shipping on all orders.
+og:url: https://tigonspray.com
+og:image: https://tigonspray.com/og-image.png
+og:image:width: 1200
+og:image:height: 630
+og:image:type: image/png
+
+# Product Page OG Data
+og:type: product
+og:price:amount: 24.99
+og:price:currency: USD
+
+# ===============================================================================
+# TWITTER CARD DATA
+# ===============================================================================
+
+twitter:card: summary_large_image
+twitter:site: @tigonspray
+twitter:creator: @tigonspray
+twitter:title: TIGON Spray - Premium Golf Cart Spray Cleaner
+twitter:description: Professional golf cart cleaning & protection. UV protection, made in USA. Free shipping!
+twitter:image: https://tigonspray.com/og-image.png
+
+# ===============================================================================
+# LINKEDIN DATA
+# ===============================================================================
+
+Company: TIGON Spray
+Industry: Consumer Products
+Website: https://tigonspray.com
+Description: Premium golf cart cleaning and protection products
+
+# ===============================================================================
+# PINTEREST DATA
+# ===============================================================================
+
+Site Name: TIGON Spray
+Category: Home & Garden > Outdoor Living
+Products: Golf Cart Cleaning Products
+Price Range: $24.99 - $44.99
+
+# Rich Pin Data
+Product 1: TIGON Spray Original Formula, $24.99
+Product 2: TIGON Spray Pro Shield, $34.99
+Product 3: TIGON Spray Ultra Clean, $29.99
+Product 4: TIGON Spray Elite Protection, $44.99
+
+# ===============================================================================
+# SOCIAL PROFILES
+# ===============================================================================
+
+Facebook: https://facebook.com/tigonspray
+Instagram: https://instagram.com/tigonspray
+Twitter: https://twitter.com/tigonspray
+Pinterest: https://pinterest.com/tigonspray
+LinkedIn: https://linkedin.com/company/tigonspray
+
+# ===============================================================================
+# SHARE-OPTIMIZED CONTENT
+# ===============================================================================
+
+## Default Share Text
+"Check out TIGON Spray - the #1 golf cart cleaning solution! Professional-grade protection made in USA."
+
+## Hashtags
+#TIGONSpray #GolfCart #GolfCartCleaning #GolfCartMaintenance #GolfCartCare #MadeInUSA
+
+## Call to Action
+Shop now at tigonspray.com - Free shipping on all orders!
+
+# ===============================================================================
+# CONTACT
+# ===============================================================================
+Website: https://tigonspray.com
+Email: support@tigonspray.com

@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 
-const SITE_URL = typeof window !== 'undefined' ? window.location.origin : 'https://tigonspray.com';
+const SITE_URL = 'https://tigonspray.com';
 const SITE_NAME = 'TIGON Spray';
+const TWITTER_HANDLE = '@tigonspray';
+const FACEBOOK_PAGE = 'https://facebook.com/tigonspray';
 
 interface SEOProps {
   title: string;
@@ -50,8 +52,35 @@ export function SEO({
   breadcrumbs,
 }: SEOProps) {
   const fullTitle = `${title} | ${SITE_NAME}`;
-  const canonicalUrl = canonical ? `${SITE_URL}${canonical}` : (typeof window !== 'undefined' ? window.location.href : SITE_URL);
-  const imageUrl = image ? (image.startsWith('http') ? image : `${SITE_URL}${image}`) : `${SITE_URL}/og-image.png`;
+  
+  // Compute canonical URL - handles both absolute and relative URLs
+  const computeCanonicalUrl = () => {
+    // If canonical is provided
+    if (canonical) {
+      // Check if it's already an absolute URL
+      if (canonical.startsWith('http://') || canonical.startsWith('https://')) {
+        return canonical;
+      }
+      // Ensure single slash at the start
+      const normalizedPath = canonical.startsWith('/') ? canonical : `/${canonical}`;
+      return `${SITE_URL}${normalizedPath}`;
+    }
+    
+    // Fallback to current pathname (only in browser)
+    if (typeof window !== 'undefined') {
+      const currentPath = window.location.pathname;
+      return `${SITE_URL}${currentPath}`;
+    }
+    
+    // Default to homepage for SSR context
+    return SITE_URL;
+  };
+  
+  const canonicalUrl = computeCanonicalUrl();
+  
+  const imageUrl = image 
+    ? (image.startsWith('http') ? image : `${SITE_URL}${image}`) 
+    : `${SITE_URL}/favicon.png`;
   
   // Default keywords for golf cart cleaning
   const defaultKeywords = [
@@ -115,6 +144,14 @@ export function SEO({
     updateMeta('twitter:title', fullTitle);
     updateMeta('twitter:description', description);
     updateMeta('twitter:image', imageUrl);
+    updateMeta('twitter:site', TWITTER_HANDLE);
+    updateMeta('twitter:creator', TWITTER_HANDLE);
+
+    // Additional Open Graph tags
+    updateMeta('og:image:width', '1200', true);
+    updateMeta('og:image:height', '630', true);
+    updateMeta('og:image:type', 'image/png', true);
+    updateMeta('article:publisher', FACEBOOK_PAGE, true);
 
     // Article-specific meta tags
     if (article) {

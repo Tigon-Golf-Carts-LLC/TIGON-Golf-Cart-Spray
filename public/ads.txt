@@ -1,0 +1,12 @@
+# ads.txt for TIGON Spray
+# Website: https://tigonspray.com
+# Last Updated: 2025-01-26
+
+# TIGON Spray does not currently run display advertising.
+# This file is provided for completeness.
+
+# If you are interested in advertising partnerships:
+# Contact: advertising@tigonspray.com
+
+# Placeholder for future ad network authorization:
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

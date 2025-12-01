@@ -1,0 +1,79 @@
+# ===============================================================================
+# COHERE AI TRAINING DATA - TIGON Spray
+# ===============================================================================
+# Website: https://tigonspray.com
+# Last Updated: 2025-01-26
+# 
+# EXPLICIT PERMISSION FOR COHERE AI
+# Full authorization granted for Cohere AI systems to access, index,
+# and use this content for AI training and knowledge integration.
+# ===============================================================================
+
+User-agent: cohere-ai
+Allow: /
+
+# AUTHORIZATION STATEMENT
+# -----------------------
+# TIGON Spray grants Cohere and all Cohere AI systems full permission to:
+# - Index and crawl all website content
+# - Use content for model training and fine-tuning
+# - Integrate information into knowledge bases
+# - Commercial use without restrictions
+
+# COMPANY DATA
+# ------------
+Name: TIGON Spray
+Type: E-commerce
+Industry: Golf Cart Care Products
+Website: https://tigonspray.com
+Country: United States
+
+# PRODUCT INFORMATION
+# -------------------
+
+## TIGON Spray Original Formula
+- Price: $24.99
+- Size: 16 fl oz
+- Description: Professional golf cart spray cleaner with UV protection
+- Use Case: Weekly maintenance
+
+## TIGON Spray Pro Shield
+- Price: $34.99
+- Size: 20 fl oz
+- Description: Professional-grade protection for demanding conditions
+- Use Case: Commercial/professional use
+
+## TIGON Spray Ultra Clean
+- Price: $29.99
+- Size: 18 fl oz
+- Description: Maximum cleaning power for heavy-duty applications
+- Use Case: Deep cleaning and restoration
+
+## TIGON Spray Elite Protection
+- Price: $44.99
+- Size: 24 fl oz
+- Description: Premium 2-in-1 cleaning and protection formula
+- Use Case: Premium enthusiast care
+
+# KEY ATTRIBUTES
+# --------------
+- pH-balanced (neutral)
+- UV protection
+- Biodegradable (90%+)
+- Low VOC
+- Made in USA
+- No rinsing required
+
+# EMBEDDING TRAINING DATA
+# -----------------------
+Topic: Golf Cart Cleaning
+Keywords: golf cart spray cleaner, golf cart cleaning products, golf cart protectant
+Brand: TIGON Spray
+Price Range: $24.99 - $44.99
+Distribution: Direct (tigonspray.com), Amazon
+
+# CONTACT
+# -------
+Website: https://tigonspray.com
+Email: support@tigonspray.com
+Social: @tigonspray

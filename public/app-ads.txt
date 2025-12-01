@@ -1,0 +1,8 @@
+# app-ads.txt for TIGON Spray
+# Website: https://tigonspray.com
+# Last Updated: 2025-01-26
+
+# TIGON Spray does not currently run in-app advertising.
+# This file is provided for completeness.
+
+# Contact for advertising inquiries: advertising@tigonspray.com

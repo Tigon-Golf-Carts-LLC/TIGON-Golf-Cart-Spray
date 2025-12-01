@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-  <!-- Homepage -->
+  <!-- ================================================================== -->
+  <!-- Homepage - Priority 1.0 -->
+  <!-- ================================================================== -->
   <url>
     <loc>https://tigonspray.com/</loc>
     <lastmod>2025-01-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://tigonspray.com/og-image.png</image:loc>
+      <image:title>TIGON Spray - Premium Golf Cart Spray Cleaner</image:title>
+      <image:caption>Professional golf cart cleaning and protection products</image:caption>
+    </image:image>
   </url>
   
-  <!-- Products Index -->
+  <!-- ================================================================== -->
+  <!-- Products Section - Priority 0.9 -->
+  <!-- ================================================================== -->
   <url>
     <loc>https://tigonspray.com/products</loc>
     <lastmod>2025-01-26</lastmod>
@@ -19,7 +29,7 @@
     <priority>0.9</priority>
   </url>
   
-  <!-- Individual Products -->
+  <!-- Product: Original Formula -->
   <url>
     <loc>https://tigonspray.com/products/tigon-spray-original-formula</loc>
     <lastmod>2025-01-26</lastmod>
@@ -27,11 +37,12 @@
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://tigonspray.com/attached_assets/generated_images/tigon_original_formula_bottle.png</image:loc>
-      <image:title>TIGON Spray Original Formula - Golf Cart Clear Spray Cleaner</image:title>
-      <image:caption>Professional golf cart spray cleaner with UV protection</image:caption>
+      <image:title>TIGON Spray Original Formula - Golf Cart Spray Cleaner</image:title>
+      <image:caption>Professional golf cart spray cleaner with UV protection - $24.99</image:caption>
     </image:image>
   </url>
   
+  <!-- Product: Pro Shield -->
   <url>
     <loc>https://tigonspray.com/products/tigon-spray-pro-shield</loc>
     <lastmod>2025-01-26</lastmod>
@@ -40,10 +51,11 @@
     <image:image>
       <image:loc>https://tigonspray.com/attached_assets/generated_images/tigon_pro_shield_bottle.png</image:loc>
       <image:title>TIGON Spray Pro Shield - Professional Golf Cart Protection</image:title>
-      <image:caption>Advanced professional-grade golf cart protection spray</image:caption>
+      <image:caption>Advanced professional-grade golf cart protection spray - $34.99</image:caption>
     </image:image>
   </url>
   
+  <!-- Product: Ultra Clean -->
   <url>
     <loc>https://tigonspray.com/products/tigon-spray-ultra-clean</loc>
     <lastmod>2025-01-26</lastmod>
@@ -52,10 +64,11 @@
     <image:image>
       <image:loc>https://tigonspray.com/attached_assets/generated_images/tigon_ultra_clean_bottle.png</image:loc>
       <image:title>TIGON Spray Ultra Clean - Heavy Duty Golf Cart Cleaner</image:title>
-      <image:caption>Maximum cleaning power for golf carts</image:caption>
+      <image:caption>Maximum cleaning power for golf carts - $29.99</image:caption>
     </image:image>
   </url>
   
+  <!-- Product: Elite Protection -->
   <url>
     <loc>https://tigonspray.com/products/tigon-spray-elite-protection</loc>
     <lastmod>2025-01-26</lastmod>
@@ -64,14 +77,16 @@
     <image:image>
       <image:loc>https://tigonspray.com/attached_assets/generated_images/tigon_elite_protection_bottle.png</image:loc>
       <image:title>TIGON Spray Elite Protection - Premium Golf Cart Care</image:title>
-      <image:caption>Premium 2-in-1 golf cart cleaning and protection spray</image:caption>
+      <image:caption>Premium 2-in-1 golf cart cleaning and protection spray - $44.99</image:caption>
     </image:image>
   </url>
   
-  <!-- Blog Index -->
+  <!-- ================================================================== -->
+  <!-- Blog Section - Priority 0.8 -->
+  <!-- ================================================================== -->
   <url>
     <loc>https://tigonspray.com/blog</loc>
-    <lastmod>2025-01-25</lastmod>
+    <lastmod>2025-01-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -98,12 +113,59 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- Affiliate Program -->
+  <!-- ================================================================== -->
+  <!-- Affiliate Program - Priority 0.7 -->
+  <!-- ================================================================== -->
   <url>
     <loc>https://tigonspray.com/affiliate-signup</loc>
     <lastmod>2025-01-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- ================================================================== -->
+  <!-- SEO & AI Files - Priority 0.3 -->
+  <!-- ================================================================== -->
+  <url>
+    <loc>https://tigonspray.com/robots.txt</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://tigonspray.com/sitemap.xml</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://tigonspray.com/llms.txt</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://tigonspray.com/ai.txt</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://tigonspray.com/gpt.txt</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://tigonspray.com/claude.txt</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
   
 </urlset>

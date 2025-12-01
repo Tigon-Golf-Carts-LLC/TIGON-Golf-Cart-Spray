@@ -1,27 +1,52 @@
 {
-  "name": "TIGON Spray - Golf Cart Cleaners",
+  "name": "TIGON Spray - Premium Golf Cart Cleaning Products",
   "short_name": "TIGON Spray",
-  "description": "Professional golf cart spray cleaners and protection. Premium formulas for superior cleaning and UV protection.",
-  "start_url": "/",
+  "description": "Professional golf cart spray cleaners and UV protection. Premium formulas for superior cleaning. #1 Golf Cart Spray Cleaner. Free shipping.",
+  "start_url": "https://tigonspray.com/",
+  "scope": "https://tigonspray.com/",
+  "id": "https://tigonspray.com/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#22c55e",
+  "background_color": "#0a0a0a",
+  "theme_color": "#af1f31",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/favicon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
-  "categories": ["shopping", "lifestyle", "automotive"],
+  "categories": ["shopping", "lifestyle", "automotive", "sports"],
+  "lang": "en-US",
+  "dir": "ltr",
   "related_applications": [],
-  "prefer_related_applications": false
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Shop Products",
+      "short_name": "Products",
+      "description": "Browse our golf cart cleaning products",
+      "url": "/products",
+      "icons": [{"src": "/favicon.png", "sizes": "96x96"}]
+    },
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Golf cart care tips and maintenance guides",
+      "url": "/blog",
+      "icons": [{"src": "/favicon.png", "sizes": "96x96"}]
+    }
+  ]
 }

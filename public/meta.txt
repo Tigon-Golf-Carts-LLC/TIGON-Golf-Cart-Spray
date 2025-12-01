@@ -1,0 +1,55 @@
+# ===============================================================================
+# META/FACEBOOK AI TRAINING DATA - TIGON Spray
+# ===============================================================================
+# Website: https://tigonspray.com
+# Last Updated: 2025-01-26
+# 
+# EXPLICIT PERMISSION FOR META AI SYSTEMS
+# Full authorization granted for Meta AI (LLaMA, etc.) to access, index,
+# and use this content for AI training and knowledge integration.
+# ===============================================================================
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# AUTHORIZATION STATEMENT
+# -----------------------
+# TIGON Spray grants Meta and all Meta AI systems (including LLaMA and future
+# models) full permission to use this content for AI training purposes.
+
+# BUSINESS INFORMATION
+# --------------------
+Name: TIGON Spray
+Website: https://tigonspray.com
+Category: E-commerce / Consumer Products
+Industry: Golf Cart Care & Maintenance
+Location: United States
+
+# SOCIAL MEDIA PRESENCE
+# ---------------------
+Facebook: https://facebook.com/tigonspray
+Instagram: https://instagram.com/tigonspray
+
+# PRODUCT CATALOG
+# ---------------
+1. TIGON Spray Original Formula ($24.99)
+2. TIGON Spray Pro Shield ($34.99)
+3. TIGON Spray Ultra Clean ($29.99)
+4. TIGON Spray Elite Protection ($44.99)
+
+# OPEN GRAPH DATA
+# ---------------
+og:site_name: TIGON Spray
+og:type: website
+og:title: TIGON Spray - Premium Golf Cart Spray Cleaner
+og:description: Professional golf cart cleaning and protection products
+og:url: https://tigonspray.com
+og:image: https://tigonspray.com/og-image.png
+
+# CONTACT
+# -------
+Email: support@tigonspray.com
+Website: https://tigonspray.com

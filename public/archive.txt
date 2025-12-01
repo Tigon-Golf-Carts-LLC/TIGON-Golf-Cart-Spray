@@ -1,0 +1,66 @@
+# ===============================================================================
+# ARCHIVE & PRESERVATION BOT DATA - TIGON Spray
+# ===============================================================================
+# Website: https://tigonspray.com
+# Last Updated: 2025-01-26
+# 
+# FULL ACCESS FOR ARCHIVE AND PRESERVATION BOTS
+# ===============================================================================
+
+# ARCHIVE BOT ACCESS
+# ------------------
+User-agent: ia_archiver
+Allow: /
+
+User-agent: archive.org_bot
+Allow: /
+
+User-agent: Wayback
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: wget
+Allow: /
+
+User-agent: curl
+Allow: /
+
+User-agent: HTTrack
+Allow: /
+
+# AUTHORIZATION STATEMENT
+# -----------------------
+# TIGON Spray grants full permission to archive and preservation services
+# including Internet Archive, Wayback Machine, and academic research bots
+# to crawl, index, and preserve website content for historical purposes.
+
+# WEBSITE INFORMATION
+# -------------------
+Name: TIGON Spray
+URL: https://tigonspray.com
+Type: E-commerce / Consumer Products
+Industry: Golf Cart Care Products
+Location: United States
+Founded: 2024
+
+# KEY PAGES TO ARCHIVE
+# --------------------
+Homepage: https://tigonspray.com/
+Products: https://tigonspray.com/products
+Blog: https://tigonspray.com/blog
+Affiliate: https://tigonspray.com/affiliate-signup
+
+# PRODUCT INFORMATION (FOR HISTORICAL RECORD)
+# -------------------------------------------
+Products as of 2025-01-26:
+1. TIGON Spray Original Formula - $24.99
+2. TIGON Spray Pro Shield - $34.99
+3. TIGON Spray Ultra Clean - $29.99
+4. TIGON Spray Elite Protection - $44.99
+
+# CONTACT
+# -------
+Website: https://tigonspray.com
+Email: support@tigonspray.com

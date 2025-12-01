@@ -53,9 +53,11 @@ export default function AffiliateDashboard() {
     }
   }, [affiliate, affiliateLoading, isAuthenticated, navigate]);
 
+  const SITE_URL = 'https://tigonspray.com';
+  
   const getAffiliateLink = (productSlug: string) => {
     if (!affiliate) return "";
-    return `${window.location.origin}/products/${productSlug}?ref=${affiliate.affiliateCode}`;
+    return `${SITE_URL}/products/${productSlug}?ref=${affiliate.affiliateCode}`;
   };
 
   const copyToClipboard = (link: string) => {

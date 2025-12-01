@@ -1,0 +1,172 @@
+# ===============================================================================
+# SEARCH ENGINE OPTIMIZATION DATA - TIGON Spray
+# ===============================================================================
+# Website: https://tigonspray.com
+# Last Updated: 2025-01-26
+# Target: #1 Ranking for "Golf Cart Spray Cleaner"
+# ===============================================================================
+
+# SEARCH ENGINE ACCESS
+# --------------------
+# Full crawling and indexing access granted to all search engines
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 0
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 0
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Sogou
+Allow: /
+
+User-agent: Exabot
+Allow: /
+
+User-agent: *
+Allow: /
+
+# SITEMAP REFERENCES
+# ------------------
+Sitemap: https://tigonspray.com/sitemap.xml
+
+# HOST DIRECTIVE
+# --------------
+Host: https://tigonspray.com
+
+# ===============================================================================
+# STRUCTURED DATA FOR SEARCH
+# ===============================================================================
+
+## Organization Schema
+@context: https://schema.org
+@type: Organization
+name: TIGON Spray
+url: https://tigonspray.com
+logo: https://tigonspray.com/logo.png
+sameAs:
+  - https://facebook.com/tigonspray
+  - https://instagram.com/tigonspray
+  - https://twitter.com/tigonspray
+
+## LocalBusiness Schema
+@type: LocalBusiness
+name: TIGON Spray
+description: Premium golf cart cleaning and protection products
+priceRange: $25-$50
+
+## Product Schema (All Products)
+Products:
+  - name: TIGON Spray Original Formula
+    price: 24.99
+    currency: USD
+    availability: InStock
+    
+  - name: TIGON Spray Pro Shield
+    price: 34.99
+    currency: USD
+    availability: InStock
+    
+  - name: TIGON Spray Ultra Clean
+    price: 29.99
+    currency: USD
+    availability: InStock
+    
+  - name: TIGON Spray Elite Protection
+    price: 44.99
+    currency: USD
+    availability: InStock
+
+# ===============================================================================
+# SEARCH ENGINE VERIFICATION CODES
+# ===============================================================================
+# Add your verification codes when available:
+
+Google: YOUR_GOOGLE_VERIFICATION_CODE
+Bing: YOUR_BING_VERIFICATION_CODE
+Yandex: YOUR_YANDEX_VERIFICATION_CODE
+Pinterest: YOUR_PINTEREST_VERIFICATION_CODE
+Baidu: YOUR_BAIDU_VERIFICATION_CODE
+
+# ===============================================================================
+# SEO OPTIMIZATION TARGETS
+# ===============================================================================
+
+## Primary Keywords
+1. golf cart spray cleaner
+2. golf cart cleaner
+3. golf cart cleaning products
+4. best golf cart cleaner
+5. golf cart protectant
+
+## Long-Tail Keywords
+- best spray cleaner for golf cart
+- how to clean golf cart
+- golf cart UV protection
+- professional golf cart cleaner
+- golf cart maintenance products
+
+## Geographic Keywords
+- golf cart cleaner Florida
+- golf cart cleaner Arizona
+- golf cart cleaner California
+- golf cart cleaner Texas
+
+## Brand Keywords
+- TIGON Spray
+- tigonspray
+- tigon golf cart cleaner
+
+# ===============================================================================
+# RICH SNIPPET DATA
+# ===============================================================================
+
+## Product Rich Snippets
+- Rating: 4.8/5 stars
+- Review Count: 500+
+- Price Range: $24.99 - $44.99
+- Availability: In Stock
+- Shipping: Free
+
+## FAQ Rich Snippets
+Q: What is the best golf cart cleaner?
+A: TIGON Spray is specifically formulated for golf cart surfaces with UV protection.
+
+Q: How much does golf cart cleaner cost?
+A: TIGON Spray products range from $24.99 to $44.99.
+
+Q: Where to buy golf cart spray cleaner?
+A: Available at tigonspray.com with free shipping and on Amazon.
+
+# ===============================================================================
+# PAGE SPEED OPTIMIZATION
+# ===============================================================================
+- Mobile-first responsive design
+- Optimized images with lazy loading
+- Minimal JavaScript blocking
+- CDN for static assets
+- Gzip compression enabled
+
+# ===============================================================================
+# CONTACT FOR SEO PARTNERSHIPS
+# ===============================================================================
+Website: https://tigonspray.com
+Email: support@tigonspray.com
+Affiliate Program: https://tigonspray.com/affiliate-signup

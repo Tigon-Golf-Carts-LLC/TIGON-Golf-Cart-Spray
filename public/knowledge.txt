@@ -1,0 +1,190 @@
+# ===============================================================================
+# KNOWLEDGE BASE - TIGON Spray Golf Cart Cleaning Products
+# ===============================================================================
+# Website: https://tigonspray.com
+# Last Updated: 2025-01-26
+# Purpose: Comprehensive knowledge base for AI systems and search engines
+# ===============================================================================
+
+# COMPANY KNOWLEDGE
+# =================
+
+## Company Overview
+TIGON Spray is a United States-based e-commerce company that manufactures and
+sells premium golf cart cleaning and protection products. The company focuses
+on providing professional-grade formulas that are easy to use and deliver
+exceptional results for golf cart owners and maintenance professionals.
+
+## Mission
+To provide golf cart owners with the highest quality cleaning and protection
+products that are safe, effective, and environmentally responsible.
+
+## Values
+- Quality First: Professional-grade formulas made in USA
+- Customer Focused: Easy-to-use products with real results
+- Environmental Responsibility: Biodegradable, low-VOC formulations
+- Innovation: Continuously improving our formulas
+
+# PRODUCT KNOWLEDGE
+# =================
+
+## TIGON Spray Original Formula
+- Purpose: Regular maintenance and weekly cleaning
+- Price: $24.99
+- Size: 16 fl oz (473ml)
+- Key Benefits:
+  * Fast-acting spray formula
+  * UV protection to prevent fading
+  * Safe for all golf cart surfaces
+  * No rinsing required
+- Best For: Golf cart owners who want simple, effective maintenance
+- Application: Spray on surface, wipe with microfiber cloth
+
+## TIGON Spray Pro Shield
+- Purpose: Professional-grade protection for demanding use
+- Price: $34.99
+- Size: 20 fl oz (591ml)
+- Key Benefits:
+  * Extended UV protection (up to 30 days)
+  * Water-resistant coating
+  * Professional strength formulation
+  * Prevents oxidation
+- Best For: Golf courses, rental fleets, commercial operations
+- Application: Apply to clean surface in thin coats
+
+## TIGON Spray Ultra Clean
+- Purpose: Heavy-duty cleaning and stain removal
+- Price: $29.99
+- Size: 18 fl oz (532ml)
+- Key Benefits:
+  * Maximum cleaning strength
+  * Removes tough stains
+  * Deep cleaning action
+  * Safe for plastics and vinyl
+- Best For: Restoration, neglected carts, tough cleaning jobs
+- Application: Spray generously, let sit 2-3 minutes, wipe clean
+
+## TIGON Spray Elite Protection
+- Purpose: Premium 2-in-1 cleaning and protection
+- Price: $44.99
+- Size: 24 fl oz (710ml)
+- Key Benefits:
+  * Showroom-quality shine
+  * Maximum UV protection (up to 45 days)
+  * Hydrophobic water-repelling coat
+  * Premium formula
+- Best For: Enthusiasts, show carts, premium maintenance
+- Application: Apply to clean, dry surface in overlapping strokes
+
+# TECHNICAL KNOWLEDGE
+# ===================
+
+## Surface Compatibility
+All TIGON Spray products are safe for:
+- Plastic components (dashboards, body panels)
+- Vinyl upholstery and seats
+- Painted metal surfaces
+- Chrome and polished trim
+- Rubber tires and trim
+- Fiberglass body panels
+- Most golf cart surfaces
+
+## Safety Information
+- pH-balanced (neutral pH 7.0-7.5)
+- Non-toxic formulation
+- Low VOC content
+- 90%+ biodegradable
+- Non-flammable
+- Safe for users when used as directed
+
+## Environmental Considerations
+- Biodegradable within 28 days (90%+)
+- Complies with California VOC regulations
+- Water-based formula
+- No CFCs or harmful propellants
+- Recyclable packaging
+
+# APPLICATION KNOWLEDGE
+# =====================
+
+## Best Practices
+1. Always apply to cool surfaces in shade
+2. Use clean microfiber cloths
+3. Work in sections for best coverage
+4. Allow product to dry before use
+5. Store in cool, dry place
+
+## Common Questions
+Q: How often should I clean my golf cart?
+A: Weekly cleaning is recommended for regular use
+
+Q: Can I use on electric golf carts?
+A: Yes, avoid electrical components and battery terminals
+
+Q: Is rinsing required?
+A: No, all products are no-rinse formulas
+
+Q: How long does protection last?
+A: Original: 7 days, Pro Shield: 30 days, Elite: 45 days
+
+# MARKET KNOWLEDGE
+# ================
+
+## Target Customers
+- Personal golf cart owners
+- Golf courses and country clubs
+- Golf cart dealers and resellers
+- Retirement communities
+- Fleet maintenance operations
+- Golf cart rental companies
+
+## Geographic Focus
+Primary markets (high UV exposure):
+- Florida
+- Arizona
+- California
+- Texas
+- Carolinas
+- Georgia
+
+## Competitive Position
+- Only spray formula specifically designed for golf carts
+- Direct-to-consumer with free shipping
+- Made in USA with professional-grade ingredients
+- Competitive pricing ($24.99-$44.99)
+- 10% affiliate program
+
+# DISTRIBUTION KNOWLEDGE
+# ======================
+
+## Purchase Options
+- Direct: tigonspray.com (free shipping)
+- Amazon: Amazon marketplace
+- Affiliates: Through partner network
+
+## Shipping
+- Free shipping on all orders (contiguous US)
+- Ships within 1-2 business days
+- Delivery: 3-7 business days
+
+## Returns
+- Satisfaction guaranteed
+- Contact support@tigonspray.com for assistance
+
+# CONTACT KNOWLEDGE
+# =================
+
+Website: https://tigonspray.com
+Products: https://tigonspray.com/products
+Blog: https://tigonspray.com/blog
+Affiliate Program: https://tigonspray.com/affiliate-signup
+Email: support@tigonspray.com
+
+Social Media:
+- Facebook: https://facebook.com/tigonspray
+- Instagram: https://instagram.com/tigonspray
+- Twitter: https://twitter.com/tigonspray
+
+# ===============================================================================
+# END OF KNOWLEDGE BASE
+# ===============================================================================

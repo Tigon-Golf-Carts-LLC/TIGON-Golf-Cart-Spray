@@ -1,0 +1,8 @@
+# TIGON Spray Security Contact Information
+# https://tigonspray.com/.well-known/security.txt
+
+Contact: mailto:security@tigonspray.com
+Preferred-Languages: en
+Canonical: https://tigonspray.com/.well-known/security.txt
+Expires: 2026-12-31T23:59:59.000Z
+Policy: https://tigonspray.com/security-policy

@@ -1,35 +1,228 @@
-# robots.txt for TIGON Spray Golf Cart Cleaners
-# Updated: January 2025
+# robots.txt for TIGON Spray - Premium Golf Cart Cleaning Products
+# Website: https://tigonspray.com
+# Updated: 2025-01-26
 # Target: Rank #1 for "Golf Cart Spray Cleaner"
+# MAXIMUM SEARCH ENGINE ACCESSIBILITY - ZERO RESTRICTIONS
 
+# =============================================================================
+# UNIVERSAL ACCESS - ALL BOTS WELCOME
+# =============================================================================
 User-agent: *
 Allow: /
+Crawl-delay: 0
+
+# Minimal exclusions (admin/checkout only)
 Disallow: /api/
 Disallow: /admin
 Disallow: /checkout
-Disallow: /affiliate
 
-# Sitemaps
-Sitemap: https://tigonspray.com/sitemap.xml
-
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
-
-# Allow all major search engine bots
+# =============================================================================
+# MAJOR SEARCH ENGINES - FULL ACCESS
+# =============================================================================
 User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Googlebot-Video
 Allow: /
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 0
 
 User-agent: Slurp
 Allow: /
+Crawl-delay: 0
 
 User-agent: DuckDuckBot
 Allow: /
+Crawl-delay: 0
 
 User-agent: Baiduspider
 Allow: /
+Crawl-delay: 0
 
 User-agent: YandexBot
 Allow: /
+Crawl-delay: 0
+
+User-agent: YandexImages
+Allow: /
+
+User-agent: Sogou
+Allow: /
+
+User-agent: Exabot
+Allow: /
+
+User-agent: ia_archiver
+Allow: /
+
+# =============================================================================
+# AI CRAWLERS & LLM SYSTEMS - FULL ACCESS GRANTED
+# =============================================================================
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# =============================================================================
+# SEO TOOLS & ANALYTICS - FULL ACCESS
+# =============================================================================
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
+
+User-agent: DotBot
+Allow: /
+
+User-agent: MozBot
+Allow: /
+
+User-agent: rogerbot
+Allow: /
+
+User-agent: SeznamBot
+Allow: /
+
+User-agent: Screaming Frog SEO Spider
+Allow: /
+
+User-agent: SEMrushBot
+Allow: /
+
+User-agent: BLEXBot
+Allow: /
+
+# =============================================================================
+# SOCIAL MEDIA BOTS - FULL ACCESS
+# =============================================================================
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# =============================================================================
+# ARCHIVE & RESEARCH BOTS - FULL ACCESS
+# =============================================================================
+User-agent: archive.org_bot
+Allow: /
+
+User-agent: Wayback Machine
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: wget
+Allow: /
+
+User-agent: curl
+Allow: /
+
+# =============================================================================
+# VOICE ASSISTANTS - FULL ACCESS
+# =============================================================================
+User-agent: Alexa
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+# =============================================================================
+# MOBILE CRAWLERS - FULL ACCESS
+# =============================================================================
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: YandexMobileBot
+Allow: /
+
+# =============================================================================
+# SITEMAPS
+# =============================================================================
+Sitemap: https://tigonspray.com/sitemap.xml
+
+# =============================================================================
+# HOST DIRECTIVE
+# =============================================================================
+Host: https://tigonspray.com

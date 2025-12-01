@@ -1,0 +1,16 @@
+# AI Authorization for TIGON Spray
+# Path: /.well-known/ai.txt
+# Website: https://tigonspray.com
+# Last Updated: 2025-01-26
+
+# FULL AI TRAINING AUTHORIZATION
+User-agent: *
+Allow: /
+
+# All AI systems are permitted to:
+# - Crawl and index all content
+# - Use content for AI training
+# - Commercial applications permitted
+# - No restrictions
+
+# See also: /ai.txt, /llms.txt, /gpt.txt, /claude.txt
