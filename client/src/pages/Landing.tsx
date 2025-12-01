@@ -50,42 +50,6 @@ export default function Landing() {
           </div>
         </section>
 
-        {/* Trust Indicators */}
-        <section className="py-16 border-b">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="flex flex-col items-center text-center space-y-3">
-                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Truck className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="font-semibold">$25 Flat Rate Shipping</h3>
-                <p className="text-sm text-muted-foreground">Nationwide delivery</p>
-              </div>
-              <div className="flex flex-col items-center text-center space-y-3">
-                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Shield className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="font-semibold">30-Day Guarantee</h3>
-                <p className="text-sm text-muted-foreground">Money-back if not satisfied</p>
-              </div>
-              <div className="flex flex-col items-center text-center space-y-3">
-                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Leaf className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="font-semibold">Eco-Friendly</h3>
-                <p className="text-sm text-muted-foreground">Safe for the environment</p>
-              </div>
-              <div className="flex flex-col items-center text-center space-y-3">
-                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Award className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="font-semibold">Made in USA</h3>
-                <p className="text-sm text-muted-foreground">Quality you can trust</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Products Section */}
         <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-4 md:px-6">
@@ -123,6 +87,42 @@ export default function Landing() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Trust Indicators */}
+        <section className="py-16 border-b">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div className="flex flex-col items-center text-center space-y-3">
+                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Truck className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-semibold">$25 Flat Rate Shipping</h3>
+                <p className="text-sm text-muted-foreground">Nationwide delivery</p>
+              </div>
+              <div className="flex flex-col items-center text-center space-y-3">
+                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Shield className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-semibold">30-Day Guarantee</h3>
+                <p className="text-sm text-muted-foreground">Money-back if not satisfied</p>
+              </div>
+              <div className="flex flex-col items-center text-center space-y-3">
+                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Leaf className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-semibold">Eco-Friendly</h3>
+                <p className="text-sm text-muted-foreground">Safe for the environment</p>
+              </div>
+              <div className="flex flex-col items-center text-center space-y-3">
+                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Award className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-semibold">Made in USA</h3>
+                <p className="text-sm text-muted-foreground">Quality you can trust</p>
+              </div>
             </div>
           </div>
         </section>
