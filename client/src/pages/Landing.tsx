@@ -1,17 +1,22 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Shield, Truck, Award } from "lucide-react";
+import { ArrowRight, Sparkles, Shield, Truck, Award, Clock } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO, seoPresets } from "@/components/SEO";
 import { useQuery } from "@tanstack/react-query";
 import { ProductCard } from "@/components/ProductCard";
+import { UpcomingProductCard } from "@/components/UpcomingProductCard";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Product } from "@shared/schema";
 
 export default function Landing() {
   const { data: products, isLoading: productsLoading } = useQuery<Product[]>({
     queryKey: ["/api/products"],
+  });
+
+  const { data: upcomingProducts, isLoading: upcomingLoading } = useQuery<Product[]>({
+    queryKey: ["/api/products/upcoming"],
   });
 
   return (
@@ -126,6 +131,44 @@ export default function Landing() {
             </div>
           </div>
         </section>
+
+        {/* Upcoming Scents Section */}
+        {(upcomingProducts && upcomingProducts.length > 0) && (
+          <section className="py-16 bg-muted/30">
+            <div className="container mx-auto px-4 md:px-6">
+              <div className="text-center mb-12">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <Clock className="h-6 w-6 text-primary" />
+                  <h2 className="text-3xl md:text-4xl font-bold" data-testid="text-upcoming-scents-title">
+                    Upcoming Scents
+                  </h2>
+                </div>
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                  Be the first to know when these exciting new scents become available. 
+                  Join our waitlist today!
+                </p>
+              </div>
+              
+              {upcomingLoading ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="space-y-4">
+                      <Skeleton className="h-48 w-full rounded-lg" />
+                      <Skeleton className="h-4 w-3/4" />
+                      <Skeleton className="h-4 w-1/2" />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {upcomingProducts?.map((product) => (
+                    <UpcomingProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+        )}
 
         {/* CTA Section */}
         <section className="py-24">

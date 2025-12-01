@@ -1,26 +1,51 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { useRoute, Link } from "wouter";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ShoppingCart, Check, ExternalLink, Star } from "lucide-react";
+import { ShoppingCart, Check, ExternalLink, Star, Clock, Bell, Loader2 } from "lucide-react";
 import { SiAmazon } from "react-icons/si";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SEO } from "@/components/SEO";
+import { apiRequest } from "@/lib/queryClient";
 import type { Product } from "@shared/schema";
 
 export default function ProductDetail() {
   const [, params] = useRoute("/products/:slug");
   const { toast } = useToast();
   const { addItem } = useCart();
+  const [email, setEmail] = useState("");
 
   const { data: product, isLoading } = useQuery<Product>({
     queryKey: [`/api/products/${params?.slug}`],
     enabled: !!params?.slug,
+  });
+
+  const backorderMutation = useMutation({
+    mutationFn: async (data: { productId: string; email: string }) => {
+      const response = await apiRequest("POST", "/api/backorder-signup", data);
+      return response.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "You're on the list!",
+        description: "We'll notify you when this product becomes available.",
+      });
+      setEmail("");
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Oops!",
+        description: error.message || "Failed to join the waitlist. Please try again.",
+        variant: "destructive",
+      });
+    },
   });
 
   const handleAddToCart = () => {
@@ -30,6 +55,13 @@ export default function ProductDetail() {
         title: "Added to cart",
         description: `${product.name} has been added to your cart.`,
       });
+    }
+  };
+
+  const handleWaitlistSignup = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (product && email) {
+      backorderMutation.mutate({ productId: product.id, email });
     }
   };
 
@@ -140,7 +172,12 @@ export default function ProductDetail() {
             {/* Product Details */}
             <div className="space-y-6">
               <div>
-                {product.inStock ? (
+                {product.isUpcoming ? (
+                  <Badge variant="secondary" className="mb-4 bg-primary text-primary-foreground" data-testid="badge-coming-soon">
+                    <Clock className="mr-1 h-3 w-3" />
+                    Coming Soon
+                  </Badge>
+                ) : product.inStock ? (
                   <Badge variant="default" className="mb-4" data-testid="badge-in-stock">
                     <Check className="mr-1 h-3 w-3" />
                     In Stock
@@ -157,7 +194,7 @@ export default function ProductDetail() {
                   <p className="text-3xl font-bold text-primary" data-testid="text-product-price">
                     ${parseFloat(product.price).toFixed(2)}
                   </p>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
                     <Badge variant="secondary" className="text-xs">
                       + $25.00 Flat Rate Shipping (per order)
                     </Badge>
@@ -198,35 +235,81 @@ export default function ProductDetail() {
               </div>
 
               <div className="space-y-3 pt-4">
-                <Button
-                  size="lg"
-                  className="w-full text-lg"
-                  onClick={handleAddToCart}
-                  disabled={!product.inStock}
-                  data-testid="button-buy-now"
-                >
-                  <ShoppingCart className="mr-2 h-5 w-5" />
-                  {product.inStock ? "Add to Cart" : "Out of Stock"}
-                </Button>
+                {product.isUpcoming ? (
+                  <div className="space-y-4">
+                    <div className="bg-muted/50 border rounded-lg p-6">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Bell className="h-5 w-5 text-primary" />
+                        <h3 className="font-semibold text-lg">Get Notified When Available</h3>
+                      </div>
+                      <p className="text-muted-foreground text-sm mb-4">
+                        Be the first to know when this exciting new scent becomes available! 
+                        Enter your email below to join the waitlist.
+                      </p>
+                      <form onSubmit={handleWaitlistSignup} className="flex gap-2">
+                        <Input
+                          type="email"
+                          placeholder="Enter your email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                          className="flex-1"
+                          data-testid="input-waitlist-email"
+                        />
+                        <Button
+                          type="submit"
+                          size="lg"
+                          disabled={backorderMutation.isPending}
+                          data-testid="button-join-waitlist"
+                        >
+                          {backorderMutation.isPending ? (
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                          ) : (
+                            <>
+                              <Bell className="mr-2 h-4 w-4" />
+                              Notify Me
+                            </>
+                          )}
+                        </Button>
+                      </form>
+                    </div>
+                    <p className="text-xs text-center text-muted-foreground">
+                      We'll only email you when this product is available. No spam, ever.
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    <Button
+                      size="lg"
+                      className="w-full text-lg"
+                      onClick={handleAddToCart}
+                      disabled={!product.inStock}
+                      data-testid="button-buy-now"
+                    >
+                      <ShoppingCart className="mr-2 h-5 w-5" />
+                      {product.inStock ? "Add to Cart" : "Out of Stock"}
+                    </Button>
 
-                {/* Amazon Buy Button - Always Visible */}
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="w-full text-lg bg-[#FF9900] hover:bg-[#FF9900]/90 text-black border-[#FF9900]"
-                  asChild
-                  data-testid="button-buy-amazon"
-                >
-                  <a href={amazonSearchUrl} target="_blank" rel="noopener noreferrer">
-                    <SiAmazon className="mr-2 h-5 w-5" />
-                    Also Available on Amazon
-                    <ExternalLink className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
+                    {/* Amazon Buy Button - Always Visible */}
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="w-full text-lg bg-[#FF9900] hover:bg-[#FF9900]/90 text-black border-[#FF9900]"
+                      asChild
+                      data-testid="button-buy-amazon"
+                    >
+                      <a href={amazonSearchUrl} target="_blank" rel="noopener noreferrer">
+                        <SiAmazon className="mr-2 h-5 w-5" />
+                        Also Available on Amazon
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
 
-                <p className="text-xs text-center text-muted-foreground">
-                  Flat rate $25 shipping - Ships anywhere in the USA
-                </p>
+                    <p className="text-xs text-center text-muted-foreground">
+                      Flat rate $25 shipping - Ships anywhere in the USA
+                    </p>
+                  </>
+                )}
               </div>
 
               {/* Specifications */}
