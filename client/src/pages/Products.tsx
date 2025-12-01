@@ -20,7 +20,7 @@ export default function Products() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4" data-testid="text-page-title">
-              Our Products
+              Golf Cart Cleaner & Protection Products
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Professional golf cart spray cleaners for superior protection and maintenance
