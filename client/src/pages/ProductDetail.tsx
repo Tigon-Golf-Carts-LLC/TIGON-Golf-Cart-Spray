@@ -239,6 +239,61 @@ export default function ProductDetail() {
                     </div>
                   </AccordionContent>
                 </AccordionItem>
+                <AccordionItem value="compositional">
+                  <AccordionTrigger>Compositional Statement</AccordionTrigger>
+                  <AccordionContent>
+                    <div className="space-y-4 text-sm text-muted-foreground">
+                      <div>
+                        <p className="font-semibold text-foreground mb-1">Contains:</p>
+                        <p>Propane, Butane, Butoxyethanol, Citrus Aurantium Dulcis Peel Extract, Ammonium Hydroxide, Citral, Sodium Hydroxide.</p>
+                        <p className="mt-1">For more ingredient information, visit <a href="https://www.zenexint.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.zenexint.com</a></p>
+                      </div>
+                      
+                      <div className="bg-destructive/10 border border-destructive/20 rounded-md p-3">
+                        <p className="font-semibold text-destructive mb-1">DANGER:</p>
+                        <p>Extremely flammable aerosol. Contains gas under pressure; may explode if heated. May cause an allergic skin reaction. May cause damage to organs through prolonged or repeated exposure.</p>
+                      </div>
+                      
+                      <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-md p-3">
+                        <p className="font-semibold text-yellow-600 dark:text-yellow-400 mb-1">PRECAUTIONARY STATEMENT:</p>
+                        <p>WARNING: Cancer and Reproduction Harm – <a href="https://www.p65warnings.ca.gov" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.p65warnings.ca.gov</a></p>
+                      </div>
+                      
+                      <div>
+                        <p className="font-semibold text-foreground mb-1">SHAKE WELL BEFORE USING</p>
+                      </div>
+                      
+                      <div>
+                        <p className="font-semibold text-foreground mb-1">FEATURES:</p>
+                        <p>A concentrated, high-foaming shampoo treatment that cleans all vinyl, upholstery, and floor carpet. Contains high-potency detergents that remove common stains and soil from seats, door panels, and headliners, leaving a pleasant lemon aroma when dry.</p>
+                      </div>
+                      
+                      <div>
+                        <p className="font-semibold text-foreground mb-1">DIRECTIONS FOR USE:</p>
+                        <p className="mb-2">For best results, use when can is between 70°F and 90°F.</p>
+                        <p className="mb-2">Invert can and point opening of spray button toward object, holding can 12 to 16 inches from surface. Press spray button firmly to apply product to the area to be cleaned.</p>
+                        <p className="mb-2"><span className="font-medium">INTERIOR SHAMPOOING:</span> Apply the high-foaming action with a natural sponge or scrub brush. Use a circular scrubbing motion for best results. Rinse with clean water using a sponge or toweling — leaves a "new car sheen."</p>
+                        <p><span className="font-medium">VINYL AND HARD SURFACE CLEANING:</span> Spray on liberally and wipe off with a damp sponge or toweling.</p>
+                      </div>
+                      
+                      <div>
+                        <p className="font-semibold text-foreground mb-1">COMPOSITIONAL INFORMATION:</p>
+                        <p className="mb-2">If medical advice is needed, have product container or label at hand. Keep out of reach of children. Read label before use. Keep away from heat, hot surfaces, sparks, open flames, and other ignition sources. No smoking. Do not spray on an open flame or other ignition source. Do not pierce or burn, even after use. Do not breathe mist, vapors, or spray. Wear protective gloves and protective clothing. Contaminated work clothing should not be allowed out of the workplace.</p>
+                        <p className="mb-2"><span className="font-medium">IF ON SKIN:</span> Wash with plenty of soap and water. Wash contaminated clothing before reuse. If skin irritation or a rash occurs: Get medical attention.</p>
+                        <p className="mb-2">Store in a well-ventilated place. Protect from sunlight. Do not expose to temperatures exceeding 50°C / 122°F. Dispose of contents and container in accordance with local, regional, national, and international regulations.</p>
+                        <p className="mb-2">Please refer to the SDS for additional information. Keep upright in a cool, dry place. Do not discard empty can in trash compactor.</p>
+                        <p>Percentage of the mixture consisting of ingredient(s) of unknown toxicity: Oral 1.5%, Dermal 1.5%, Inhalation 1.5%.</p>
+                      </div>
+                      
+                      <div className="border-t pt-3 mt-3">
+                        <p className="font-semibold text-foreground">Read Safety Data Sheet before using.</p>
+                        <p className="font-bold text-destructive">KEEP OUT OF REACH OF CHILDREN.</p>
+                        <p className="mt-2">Made in U.S.A. with globally sourced materials</p>
+                        <p>VOC Content: 5.0%</p>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
                 <AccordionItem value="shipping">
                   <AccordionTrigger>Shipping Information</AccordionTrigger>
                   <AccordionContent>
