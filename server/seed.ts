@@ -105,7 +105,7 @@ async function seed() {
       title: "Best Lemon Scented Golf Cart Seat Cleaner - Buy Professional Grade",
       slug: "buy-lemon-scented-golf-cart-seat-cleaner",
       metaTitle: "Buy Lemon Golf Cart Seat Cleaner | Best Professional Spray",
-      metaDescription: "Shop the best lemon scented golf cart seat cleaner. Professional-grade formula removes stains from vinyl & leather seats. $10 + free USA shipping. Buy now!",
+      metaDescription: "Shop the best lemon scented golf cart seat cleaner. Professional-grade formula removes stains from vinyl & leather seats. $10 + $25 flat-rate shipping. Buy now!",
       excerpt: "Discover why TIGON Lemon Scent Golf Cart Seat Cleaner is the #1 choice for golf cart owners across America. Professional-grade formula at an unbeatable price.",
       heroImage: "/attached_assets/LEMON SCENT GOLF CART SEAT CLEANER_1764608944764.jpg",
       heroImageAlt: "TIGON Lemon Scented Golf Cart Seat Cleaner spray can for cleaning vinyl and leather golf cart seats in Florida, Arizona, and California golf communities",
@@ -144,7 +144,7 @@ Wipe clean with a fresh microfiber cloth. Your seats will be spotless with a ple
 
 ## Where to Buy Golf Cart Seat Cleaner
 
-Ready to transform your golf cart seats? [Shop our Lemon Scent Golf Cart Seat Cleaner](/products/lemon-scent-golf-cart-seat-cleaner) for just $10.00 with flat-rate nationwide shipping.
+Ready to transform your golf cart seats? [Shop our Lemon Scent Golf Cart Seat Cleaner](/products/lemon-scent-golf-cart-seat-cleaner) for just $10.00 plus $25 flat-rate shipping anywhere in the USA.
 
 ### Complete Your Golf Cart Cleaning Kit
 
@@ -167,7 +167,7 @@ For the best value, consider our [12 Pack Golf Cart Cleaner Bundle](/products/12
       title: "Buy Grape Scented Golf Cart Body and Windshield Cleaner Online",
       slug: "buy-grape-golf-cart-body-windshield-cleaner",
       metaTitle: "Buy Grape Golf Cart Body Cleaner | Streak-Free Windshield",
-      metaDescription: "Shop grape scented golf cart body & windshield cleaner. Streak-free formula removes bugs, sap & grime. Professional-grade spray $10. Ships nationwide!",
+      metaDescription: "Shop grape scented golf cart body & windshield cleaner. Streak-free formula removes bugs, sap & grime. $10 + $25 flat-rate shipping nationwide!",
       excerpt: "Get streak-free results on your golf cart body and windshield with TIGON Grape Scent Cleaner. The professional choice for exterior golf cart cleaning.",
       heroImage: "/attached_assets/GRAPE SCENT GOLF CART BODY AND WINDSHIELD CLEANER_1764608944764.jpg",
       heroImageAlt: "TIGON Grape Scented Golf Cart Body and Windshield Cleaner for streak-free cleaning on Club Car EZGO Yamaha golf carts at golf courses nationwide",
@@ -212,7 +212,7 @@ For stubborn contamination like dried bugs or tree sap, allow the cleaner to dwe
 
 ## Where to Buy Golf Cart Body Cleaner
 
-[Shop our Grape Scent Golf Cart Body & Windshield Cleaner](/products/grape-scent-golf-cart-body-windshield-cleaner) for just $10.00. We ship nationwide with flat-rate shipping.
+[Shop our Grape Scent Golf Cart Body & Windshield Cleaner](/products/grape-scent-golf-cart-body-windshield-cleaner) for just $10.00 plus $25 flat-rate shipping anywhere in the USA.
 
 ### Pair With Our Complete Collection
 
@@ -282,7 +282,7 @@ Allow 1-2 minutes for the coating to bond, then buff with a clean, dry microfibe
 
 ## Where to Buy Golf Cart Vinyl Protector
 
-[Order Watermelon Scent Vinyl & Plastic Coating](/products/watermelon-scent-golf-cart-vinyl-plastic-coating) for only $10.00 with nationwide flat-rate shipping.
+[Order Watermelon Scent Vinyl & Plastic Coating](/products/watermelon-scent-golf-cart-vinyl-plastic-coating) for only $10.00 plus $25 flat-rate shipping anywhere in the USA.
 
 ### Complete Golf Cart Protection
 
@@ -304,7 +304,7 @@ Whether you own a Club Car, EZGO, Yamaha, or any other golf cart brand, our wate
       title: "Buy Golf Cart Cleaner Bundle - 12 Pack Complete Cleaning Kit",
       slug: "buy-golf-cart-cleaner-bundle-12-pack",
       metaTitle: "Golf Cart Cleaner 12 Pack Bundle | Complete Cleaning Kit",
-      metaDescription: "Buy the complete golf cart cleaner bundle - 12 cans including seat cleaner, body cleaner & vinyl coating. Save 15%! Professional kit ships free. Order now!",
+      metaDescription: "Buy the complete golf cart cleaner bundle - 12 cans including seat cleaner, body cleaner & vinyl coating. Save 15%! $99 + $25 flat-rate shipping. Order now!",
       excerpt: "Get the complete TIGON Golf Cart Cleaning Kit with 12 cans of professional-grade cleaners. Best value for serious golf cart maintenance.",
       heroImage: "/attached_assets/12 PACK BUNDLE OF GOLF CART CLEANERS_1764608944764.jpg",
       heroImageAlt: "TIGON 12 Pack Golf Cart Cleaner Bundle complete cleaning kit with Lemon Grape and Watermelon scented professional cleaners for Club Car EZGO Yamaha",
@@ -351,7 +351,7 @@ Follow the same routine but allow extra dwell time for each product to address a
 
 ## Where to Buy the Golf Cart Cleaner Bundle
 
-[Order the 12 Pack Bundle](/products/12-pack-golf-cart-cleaner-protection-bundle) for $99.00 with flat-rate nationwide shipping. It's the best value for serious golf cart owners.
+[Order the 12 Pack Bundle](/products/12-pack-golf-cart-cleaner-protection-bundle) for $99.00 plus $25 flat-rate shipping anywhere in the USA. It's the best value for serious golf cart owners.
 
 ## Perfect for Multiple Carts
 
