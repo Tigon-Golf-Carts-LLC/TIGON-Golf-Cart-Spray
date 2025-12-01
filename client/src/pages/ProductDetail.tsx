@@ -153,9 +153,17 @@ export default function ProductDetail() {
                 <h1 className="text-4xl font-bold mb-4" data-testid="text-product-name">
                   {product.name}
                 </h1>
-                <p className="text-3xl font-bold text-primary" data-testid="text-product-price">
-                  ${parseFloat(product.price).toFixed(2)}
-                </p>
+                <div className="space-y-2">
+                  <p className="text-3xl font-bold text-primary" data-testid="text-product-price">
+                    ${parseFloat(product.price).toFixed(2)}
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="secondary" className="text-xs">
+                      + $25.00 Flat Rate Shipping (per order)
+                    </Badge>
+                    <Badge variant="outline" className="text-xs">Nationwide</Badge>
+                  </div>
+                </div>
               </div>
 
               <p className="text-lg text-muted-foreground" data-testid="text-product-description">
@@ -217,7 +225,7 @@ export default function ProductDetail() {
                 </Button>
 
                 <p className="text-xs text-center text-muted-foreground">
-                  Free shipping on orders over $25
+                  Flat rate $25 shipping - Ships anywhere in the USA
                 </p>
               </div>
 
@@ -234,10 +242,12 @@ export default function ProductDetail() {
                 <AccordionItem value="shipping">
                   <AccordionTrigger>Shipping Information</AccordionTrigger>
                   <AccordionContent>
-                    <p className="text-sm text-muted-foreground">
-                      Free shipping on all orders. Orders are typically processed within 1-2 business days. 
-                      Delivery times vary by location, typically 3-5 business days.
-                    </p>
+                    <div className="space-y-2 text-sm text-muted-foreground">
+                      <p className="font-semibold text-foreground">Flat Rate Shipping: $25.00</p>
+                      <p>We ship nationwide to all 50 US states. Orders are typically processed within 1-2 business days.</p>
+                      <p>Delivery times vary by location, typically 3-5 business days.</p>
+                      <p>All orders are carefully packaged to ensure your products arrive in perfect condition.</p>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="returns">

@@ -180,11 +180,13 @@ export default function Checkout() {
     }
   };
 
+  const SHIPPING_COST = 25.00;
+  
   const createOrderMutation = useMutation({
     mutationFn: async (data: typeof formData & { paymentToken?: string }) => {
       return await apiRequest("POST", "/api/orders", {
         ...data,
-        total: totalPrice.toFixed(2),
+        total: (totalPrice + SHIPPING_COST).toFixed(2),
         paymentToken: data.paymentToken,
         items: items.map(item => ({
           productId: item.product.id,
@@ -448,7 +450,7 @@ export default function Checkout() {
                     <>
                       <Lock className="mr-2 h-4 w-4" />
                       {cloverConfig?.configured 
-                        ? `Pay $${totalPrice.toFixed(2)}` 
+                        ? `Pay $${(totalPrice + SHIPPING_COST).toFixed(2)}` 
                         : 'Place Order'}
                     </>
                   )}
@@ -489,14 +491,14 @@ export default function Checkout() {
                       <span className="font-medium" data-testid="text-subtotal">${totalPrice.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Shipping</span>
-                      <span className="font-medium text-primary">Free</span>
+                      <span className="text-muted-foreground">Shipping (Nationwide)</span>
+                      <span className="font-medium">$25.00</span>
                     </div>
                   </div>
 
                   <div className="flex justify-between text-lg">
                     <span className="font-semibold">Total</span>
-                    <span className="font-bold" data-testid="text-total">${totalPrice.toFixed(2)}</span>
+                    <span className="font-bold" data-testid="text-total">${(totalPrice + 25).toFixed(2)}</span>
                   </div>
                 </CardContent>
               </Card>

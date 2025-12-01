@@ -40,12 +40,17 @@ export function ProductCard({ product }: ProductCardProps) {
           <h3 className="text-xl font-semibold mb-2 line-clamp-2" data-testid={`text-product-name-${product.id}`}>
             {product.name}
           </h3>
-          <p className="text-muted-foreground text-sm line-clamp-2 mb-4">
+          <p className="text-muted-foreground text-sm line-clamp-2 mb-3">
             {product.description}
           </p>
-          <p className="text-3xl font-bold" data-testid={`text-product-price-${product.id}`}>
-            ${parseFloat(product.price).toFixed(2)}
-          </p>
+          <div className="space-y-1">
+            <p className="text-3xl font-bold" data-testid={`text-product-price-${product.id}`}>
+              ${parseFloat(product.price).toFixed(2)}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              + $25.00 flat rate shipping
+            </p>
+          </div>
         </CardContent>
         <CardFooter className="p-6 pt-0 gap-2">
           <Button

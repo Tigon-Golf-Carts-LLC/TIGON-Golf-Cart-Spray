@@ -128,14 +128,14 @@ export default function Cart() {
                       <span className="font-medium" data-testid="text-subtotal">${totalPrice.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Shipping</span>
-                      <span className="font-medium text-primary">Free</span>
+                      <span className="text-muted-foreground">Shipping (Flat Rate - Nationwide)</span>
+                      <span className="font-medium">$25.00</span>
                     </div>
                   </div>
 
                   <div className="flex justify-between text-lg">
                     <span className="font-semibold">Total</span>
-                    <span className="font-bold" data-testid="text-total">${totalPrice.toFixed(2)}</span>
+                    <span className="font-bold" data-testid="text-total">${(totalPrice + 25).toFixed(2)}</span>
                   </div>
 
                   <Button asChild size="lg" className="w-full" data-testid="button-checkout">
