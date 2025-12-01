@@ -4,8 +4,16 @@ import { ArrowRight, Shield, Leaf, Truck, Award } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO, seoPresets } from "@/components/SEO";
+import { useQuery } from "@tanstack/react-query";
+import { ProductCard } from "@/components/ProductCard";
+import { Skeleton } from "@/components/ui/skeleton";
+import type { Product } from "@shared/schema";
 
 export default function Landing() {
+  const { data: products, isLoading: productsLoading } = useQuery<Product[]>({
+    queryKey: ["/api/products"],
+  });
+
   return (
     <div className="flex min-h-screen flex-col">
       <SEO {...seoPresets.home} />
@@ -50,8 +58,8 @@ export default function Landing() {
                 <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
                   <Truck className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-semibold">Free Shipping</h3>
-                <p className="text-sm text-muted-foreground">On all orders, no minimum</p>
+                <h3 className="font-semibold">$25 Flat Rate Shipping</h3>
+                <p className="text-sm text-muted-foreground">Nationwide delivery</p>
               </div>
               <div className="flex flex-col items-center text-center space-y-3">
                 <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
@@ -78,6 +86,47 @@ export default function Landing() {
           </div>
         </section>
 
+        {/* Products Section */}
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-products-title">
+                Our Products
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Premium golf cart cleaning and protection solutions for every surface
+              </p>
+            </div>
+            
+            {productsLoading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="space-y-4">
+                    <Skeleton className="h-48 w-full rounded-lg" />
+                    <Skeleton className="h-4 w-3/4" />
+                    <Skeleton className="h-4 w-1/2" />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {products?.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+            )}
+            
+            <div className="text-center mt-10">
+              <Button size="lg" asChild className="text-lg px-8" data-testid="button-view-all-products">
+                <Link href="/products">
+                  View All Products
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-24">
           <div className="container mx-auto px-4 md:px-6">
@@ -90,10 +139,10 @@ export default function Landing() {
               </p>
               <div className="pt-4">
                 <Button size="lg" asChild className="text-lg px-8" data-testid="button-get-started">
-                  <a href="/api/login">
-                    Get Started
+                  <Link href="/products">
+                    Shop Now
                     <ArrowRight className="ml-2 h-5 w-5" />
-                  </a>
+                  </Link>
                 </Button>
               </div>
             </div>
