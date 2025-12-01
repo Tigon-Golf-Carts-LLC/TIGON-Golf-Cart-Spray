@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Leaf, Truck, Award } from "lucide-react";
+import { ArrowRight, Sparkles, Shield, Truck, Award } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO, seoPresets } from "@/components/SEO";
@@ -111,9 +111,9 @@ export default function Landing() {
               </div>
               <div className="flex flex-col items-center text-center space-y-3">
                 <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Leaf className="h-6 w-6 text-primary" />
+                  <Shield className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-semibold">Eco-Friendly</h3>
+                <h3 className="font-semibold">The Safest Golf Cart Cleaner</h3>
                 <p className="text-sm text-muted-foreground">Safe for the environment</p>
               </div>
               <div className="flex flex-col items-center text-center space-y-3">
