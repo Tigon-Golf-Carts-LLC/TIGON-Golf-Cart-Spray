@@ -8,7 +8,7 @@ async function seed() {
   const products: InsertProduct[] = [
     {
       name: "Lemon Scent Golf Cart Seat Cleaner",
-      slug: "lemon-scent-seat-cleaner",
+      slug: "lemon-scent-golf-cart-seat-cleaner",
       description: "Professional-grade seat cleaner with a refreshing lemon scent. Specially formulated for golf cart seats, this powerful cleaner removes dirt, stains, and grime while leaving a pleasant citrus aroma. Safe for all seat materials including vinyl and leather.",
       price: "10.00",
       imageUrl: "/attached_assets/LEMON SCENT GOLF CART SEAT CLEANER_1764608944764.jpg",
@@ -26,7 +26,7 @@ async function seed() {
     },
     {
       name: "Grape Scent Golf Cart Body & Windshield Cleaner",
-      slug: "grape-scent-body-windshield-cleaner",
+      slug: "grape-scent-golf-cart-body-windshield-cleaner",
       description: "Complete body and windshield cleaning solution with a delightful grape scent. Cuts through dirt, bugs, tree sap, and road grime on your golf cart's exterior surfaces. Crystal-clear streak-free finish on windshields.",
       price: "10.00",
       imageUrl: "/attached_assets/GRAPE SCENT GOLF CART BODY AND WINDSHIELD CLEANER_1764608944764.jpg",
@@ -44,7 +44,7 @@ async function seed() {
     },
     {
       name: "Watermelon Scent Golf Cart Vinyl & Plastic Coating",
-      slug: "watermelon-scent-vinyl-plastic-coating",
+      slug: "watermelon-scent-golf-cart-vinyl-plastic-coating",
       description: "Premium vinyl and plastic coating with a sweet watermelon scent. Protects and restores the shine on all vinyl and plastic surfaces of your golf cart. Provides UV protection to prevent fading and cracking.",
       price: "10.00",
       imageUrl: "/attached_assets/WATERMELON SCENT GOLF CART VINYL & PLASTIC COATING_1764608944764.jpg",
@@ -62,7 +62,7 @@ async function seed() {
     },
     {
       name: "12 Pack Bundle - Complete Golf Cart Cleaning Kit",
-      slug: "12-pack-bundle-complete-kit",
+      slug: "12-pack-golf-cart-cleaner-protection-bundle",
       description: "The ultimate golf cart cleaning bundle! Get all three TIGON cleaners - 4 Lemon Scent Seat Cleaners, 4 Grape Scent Body & Windshield Cleaners, and 4 Watermelon Scent Vinyl & Plastic Coatings. Everything you need to keep your golf cart looking showroom new.",
       price: "99.00",
       imageUrl: "/attached_assets/12 PACK BUNDLE OF GOLF CART CLEANERS_1764608944764.jpg",
