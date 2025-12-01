@@ -17,7 +17,7 @@ export function Footer() {
 
           {/* Shop */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Shop</h4>
+            <h4 className="text-sm font-semibold">Shop Golf Cart Cleaners</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/products" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-products">
@@ -25,18 +25,23 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/products/original-formula" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-original">
-                  Original Formula
+                <Link href="/products/lemon-scent-golf-cart-seat-cleaner" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-lemon">
+                  Lemon Seat Cleaner
                 </Link>
               </li>
               <li>
-                <Link href="/products/pro-shield" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-pro">
-                  Pro Shield
+                <Link href="/products/grape-scent-golf-cart-body-windshield-cleaner" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-grape">
+                  Grape Body Cleaner
                 </Link>
               </li>
               <li>
-                <Link href="/products/ultra-clean" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-ultra">
-                  Ultra Clean
+                <Link href="/products/watermelon-scent-golf-cart-vinyl-plastic-coating" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-watermelon">
+                  Watermelon Vinyl Coating
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/12-pack-golf-cart-cleaner-protection-bundle" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-bundle">
+                  12 Pack Bundle
                 </Link>
               </li>
             </ul>
@@ -47,8 +52,13 @@ export function Footer() {
             <h4 className="text-sm font-semibold">Resources</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/blog" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-blog">
-                  Blog
+                <Link href="/blog" className="text-primary font-medium hover:text-primary/80 transition-colors" data-testid="link-footer-blog">
+                  Golf Cart Cleaning Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/buy-golf-cart-cleaner-bundle-12-pack" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-buying-guide">
+                  Buying Guide
                 </Link>
               </li>
               <li>
