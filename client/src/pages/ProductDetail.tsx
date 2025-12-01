@@ -7,11 +7,12 @@ import { Input } from "@/components/ui/input";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ShoppingCart, Check, ExternalLink, Star, Clock, Bell, Loader2 } from "lucide-react";
+import { ShoppingCart, Check, ExternalLink, Star, Clock, Bell, Loader2, X } from "lucide-react";
 import { SiAmazon } from "react-icons/si";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { SEO } from "@/components/SEO";
 import { apiRequest } from "@/lib/queryClient";
 import type { Product } from "@shared/schema";
@@ -21,6 +22,7 @@ export default function ProductDetail() {
   const { toast } = useToast();
   const { addItem } = useCart();
   const [email, setEmail] = useState("");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const { data: product, isLoading } = useQuery<Product>({
     queryKey: [`/api/products/${params?.slug}`],
@@ -38,6 +40,7 @@ export default function ProductDetail() {
         description: "We'll notify you when this product becomes available.",
       });
       setEmail("");
+      setIsDialogOpen(false);
     },
     onError: (error: Error) => {
       toast({
@@ -237,44 +240,60 @@ export default function ProductDetail() {
               <div className="space-y-3 pt-4">
                 {product.isUpcoming ? (
                   <div className="space-y-4">
-                    <div className="bg-muted/50 border rounded-lg p-6">
-                      <div className="flex items-center gap-2 mb-3">
-                        <Bell className="h-5 w-5 text-primary" />
-                        <h3 className="font-semibold text-lg">Get Notified When Available</h3>
-                      </div>
-                      <p className="text-muted-foreground text-sm mb-4">
-                        Be the first to know when this exciting new scent becomes available! 
-                        Enter your email below to join the waitlist.
-                      </p>
-                      <form onSubmit={handleWaitlistSignup} className="flex gap-2">
-                        <Input
-                          type="email"
-                          placeholder="Enter your email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          required
-                          className="flex-1"
-                          data-testid="input-waitlist-email"
-                        />
+                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                      <DialogTrigger asChild>
                         <Button
-                          type="submit"
                           size="lg"
-                          disabled={backorderMutation.isPending}
-                          data-testid="button-join-waitlist"
+                          className="w-full text-lg"
+                          data-testid="button-get-notified"
                         >
-                          {backorderMutation.isPending ? (
-                            <Loader2 className="h-4 w-4 animate-spin" />
-                          ) : (
-                            <>
-                              <Bell className="mr-2 h-4 w-4" />
-                              Notify Me
-                            </>
-                          )}
+                          <Bell className="mr-2 h-5 w-5" />
+                          Get Notified When Available
                         </Button>
-                      </form>
-                    </div>
-                    <p className="text-xs text-center text-muted-foreground">
-                      We'll only email you when this product is available. No spam, ever.
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-md">
+                        <DialogHeader>
+                          <DialogTitle className="flex items-center gap-2">
+                            <Bell className="h-5 w-5 text-primary" />
+                            Join the Waitlist
+                          </DialogTitle>
+                          <DialogDescription>
+                            Be the first to know when <span className="font-semibold">{product.name}</span> becomes available for purchase!
+                          </DialogDescription>
+                        </DialogHeader>
+                        <form onSubmit={handleWaitlistSignup} className="space-y-4 mt-4">
+                          <div className="space-y-2">
+                            <Input
+                              type="email"
+                              placeholder="Enter your email address"
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                              required
+                              className="w-full"
+                              data-testid="input-waitlist-email"
+                            />
+                            <p className="text-xs text-muted-foreground">
+                              We'll only email you when this product is available. No spam, ever.
+                            </p>
+                          </div>
+                          <Button
+                            type="submit"
+                            className="w-full"
+                            disabled={backorderMutation.isPending}
+                            data-testid="button-join-waitlist"
+                          >
+                            {backorderMutation.isPending ? (
+                              <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                            ) : (
+                              <Bell className="mr-2 h-4 w-4" />
+                            )}
+                            {backorderMutation.isPending ? "Signing up..." : "Notify Me"}
+                          </Button>
+                        </form>
+                      </DialogContent>
+                    </Dialog>
+                    <p className="text-sm text-center text-muted-foreground">
+                      This scent is coming soon! Sign up to be notified when it's available.
                     </p>
                   </div>
                 ) : (
