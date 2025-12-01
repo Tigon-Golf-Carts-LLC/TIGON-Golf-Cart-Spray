@@ -9,6 +9,7 @@ import {
   affiliateClicks,
   affiliateSales,
   blogPosts,
+  backorderEmails,
   type User,
   type UpsertUser,
   type Product,
@@ -27,6 +28,8 @@ import {
   type InsertAffiliateSale,
   type BlogPost,
   type InsertBlogPost,
+  type BackorderEmail,
+  type InsertBackorderEmail,
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc, and } from "drizzle-orm";
@@ -39,11 +42,18 @@ export interface IStorage {
 
   // Product operations
   getAllProducts(): Promise<Product[]>;
+  getAvailableProducts(): Promise<Product[]>;
+  getUpcomingProducts(): Promise<Product[]>;
   getProduct(id: string): Promise<Product | undefined>;
   getProductBySlug(slug: string): Promise<Product | undefined>;
   createProduct(product: InsertProduct): Promise<Product>;
   updateProduct(id: string, product: Partial<InsertProduct>): Promise<Product | undefined>;
   deleteProduct(id: string): Promise<void>;
+
+  // Backorder Email operations
+  createBackorderEmail(email: InsertBackorderEmail): Promise<BackorderEmail>;
+  getBackorderEmailsByProduct(productId: string): Promise<BackorderEmail[]>;
+  checkBackorderEmailExists(productId: string, email: string): Promise<boolean>;
 
   // Order operations
   getAllOrders(): Promise<Order[]>;
@@ -116,6 +126,14 @@ export class DatabaseStorage implements IStorage {
     return await db.select().from(products).orderBy(products.createdAt);
   }
 
+  async getAvailableProducts(): Promise<Product[]> {
+    return await db.select().from(products).where(eq(products.isUpcoming, false)).orderBy(products.createdAt);
+  }
+
+  async getUpcomingProducts(): Promise<Product[]> {
+    return await db.select().from(products).where(eq(products.isUpcoming, true)).orderBy(products.createdAt);
+  }
+
   async getProduct(id: string): Promise<Product | undefined> {
     const [product] = await db.select().from(products).where(eq(products.id, id));
     return product;
@@ -142,6 +160,24 @@ export class DatabaseStorage implements IStorage {
 
   async deleteProduct(id: string): Promise<void> {
     await db.delete(products).where(eq(products.id, id));
+  }
+
+  // Backorder Email operations
+  async createBackorderEmail(emailData: InsertBackorderEmail): Promise<BackorderEmail> {
+    const [email] = await db.insert(backorderEmails).values(emailData).returning();
+    return email;
+  }
+
+  async getBackorderEmailsByProduct(productId: string): Promise<BackorderEmail[]> {
+    return await db.select().from(backorderEmails).where(eq(backorderEmails.productId, productId));
+  }
+
+  async checkBackorderEmailExists(productId: string, email: string): Promise<boolean> {
+    const [existing] = await db
+      .select()
+      .from(backorderEmails)
+      .where(and(eq(backorderEmails.productId, productId), eq(backorderEmails.email, email)));
+    return !!existing;
   }
 
   // Order operations

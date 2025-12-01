@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { type Server } from "http";
 import { storage } from "./storage";
 import { setupAuth, isAuthenticated, isAdmin } from "./replitAuth";
-import { insertProductSchema, insertOrderSchema, insertBlogPostSchema } from "@shared/schema";
+import { insertProductSchema, insertOrderSchema, insertBlogPostSchema, insertBackorderEmailSchema } from "@shared/schema";
 import { fromZodError } from "zod-validation-error";
 import { getCloverPublicConfig, isCloverConfigured, createCharge } from "./clover";
 import { sendOrderConfirmation, sendStoreNotification, isEmailConfigured } from "./email";
@@ -142,11 +142,43 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   // Product routes
   app.get('/api/products', async (req, res) => {
     try {
-      const products = await storage.getAllProducts();
+      const products = await storage.getAvailableProducts();
       res.json(products);
     } catch (error) {
       console.error("Error fetching products:", error);
       res.status(500).json({ message: "Failed to fetch products" });
+    }
+  });
+
+  app.get('/api/products/upcoming', async (req, res) => {
+    try {
+      const products = await storage.getUpcomingProducts();
+      res.json(products);
+    } catch (error) {
+      console.error("Error fetching upcoming products:", error);
+      res.status(500).json({ message: "Failed to fetch upcoming products" });
+    }
+  });
+
+  // Backorder email signup
+  app.post('/api/backorder-signup', async (req, res) => {
+    try {
+      const parsed = insertBackorderEmailSchema.safeParse(req.body);
+      if (!parsed.success) {
+        return res.status(400).json({ message: fromZodError(parsed.error).toString() });
+      }
+
+      // Check if email already exists for this product
+      const exists = await storage.checkBackorderEmailExists(parsed.data.productId, parsed.data.email);
+      if (exists) {
+        return res.status(400).json({ message: "You're already on the waitlist for this product!" });
+      }
+
+      await storage.createBackorderEmail(parsed.data);
+      res.status(201).json({ message: "Successfully added to waitlist!" });
+    } catch (error) {
+      console.error("Error signing up for backorder:", error);
+      res.status(500).json({ message: "Failed to sign up for waitlist" });
     }
   });
 
