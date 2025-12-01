@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Leaf, Truck, Award } from "lucide-react";
+import { ArrowRight, Sparkles, Leaf, Truck, Award } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO, seoPresets } from "@/components/SEO";
@@ -104,10 +104,10 @@ export default function Landing() {
               </div>
               <div className="flex flex-col items-center text-center space-y-3">
                 <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Shield className="h-6 w-6 text-primary" />
+                  <Sparkles className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-semibold">30-Day Guarantee</h3>
-                <p className="text-sm text-muted-foreground">Money-back if not satisfied</p>
+                <h3 className="font-semibold">Best Scents</h3>
+                <p className="text-sm text-muted-foreground">Lemon, Grape & Watermelon</p>
               </div>
               <div className="flex flex-col items-center text-center space-y-3">
                 <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
