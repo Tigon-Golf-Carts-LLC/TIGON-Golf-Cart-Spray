@@ -1,40 +1,18 @@
-import { useQuery } from "@tanstack/react-query";
 import { useRoute, Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft, Calendar } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { getBlogPostBySlug } from "@/data/blogs";
 import type { BlogPost } from "@shared/schema";
 
 export default function BlogPostPage() {
   const [, params] = useRoute("/blog/:slug");
 
-  const { data: post, isLoading } = useQuery<BlogPost>({
-    queryKey: [`/api/blog/${params?.slug}`],
-    enabled: !!params?.slug,
-  });
-
-  if (isLoading) {
-    return (
-      <div className="flex min-h-screen flex-col">
-        <Header />
-        <main className="flex-1 py-12">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="max-w-3xl mx-auto space-y-8">
-              <Skeleton className="h-12 w-3/4" />
-              <Skeleton className="aspect-video" />
-              <Skeleton className="h-64" />
-            </div>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
+  const post = params?.slug ? getBlogPostBySlug(params.slug) : undefined;
 
   if (!post) {
     return (
