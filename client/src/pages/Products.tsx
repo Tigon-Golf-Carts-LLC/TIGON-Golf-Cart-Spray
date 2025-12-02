@@ -1,27 +1,17 @@
-import { useQuery } from "@tanstack/react-query";
 import { ProductCard } from "@/components/ProductCard";
 import { UpcomingProductCard } from "@/components/UpcomingProductCard";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Skeleton } from "@/components/ui/skeleton";
 import { SEO, seoPresets } from "@/components/SEO";
 import { Clock } from "lucide-react";
-import type { Product } from "@shared/schema";
+import { products, upcomingProducts } from "@/data/products";
 
 export default function Products() {
-  const { data: products, isLoading } = useQuery<Product[]>({
-    queryKey: ["/api/products"],
-  });
-
-  const { data: upcomingProducts, isLoading: upcomingLoading } = useQuery<Product[]>({
-    queryKey: ["/api/products/upcoming"],
-  });
-
   return (
     <div className="flex min-h-screen flex-col">
       <SEO {...seoPresets.products} />
       <Header />
-      
+
       <main className="flex-1 py-12">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
@@ -33,13 +23,7 @@ export default function Products() {
             </p>
           </div>
 
-          {isLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[...Array(4)].map((_, i) => (
-                <Skeleton key={i} className="h-[450px]" />
-              ))}
-            </div>
-          ) : products && products.length > 0 ? (
+          {products && products.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
@@ -62,24 +46,16 @@ export default function Products() {
                   </h2>
                 </div>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                  Be the first to know when these exciting new scents become available. 
+                  Be the first to know when these exciting new scents become available.
                   Sign up to get notified!
                 </p>
               </div>
-              
-              {upcomingLoading ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                  {[1, 2, 3, 4].map((i) => (
-                    <Skeleton key={i} className="h-[450px]" />
-                  ))}
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                  {upcomingProducts?.map((product) => (
-                    <UpcomingProductCard key={product.id} product={product} />
-                  ))}
-                </div>
-              )}
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {upcomingProducts.map((product) => (
+                  <UpcomingProductCard key={product.id} product={product} />
+                ))}
+              </div>
             </div>
           )}
         </div>

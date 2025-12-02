@@ -1,24 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/ProductCard";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowRight, Shield, Leaf, Truck, Award } from "lucide-react";
-import type { Product, BlogPost } from "@shared/schema";
+import { products } from "@/data/products";
 
 export default function Home() {
-  const { data: products, isLoading: productsLoading } = useQuery<Product[]>({
-    queryKey: ["/api/products"],
-  });
-
-  const { data: blogPosts, isLoading: blogLoading } = useQuery<BlogPost[]>({
-    queryKey: ["/api/blog"],
-  });
-
-  const latestPosts = blogPosts?.slice(0, 3) || [];
-
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -64,19 +52,11 @@ export default function Home() {
               </p>
             </div>
 
-            {productsLoading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[...Array(4)].map((_, i) => (
-                  <Skeleton key={i} className="h-[400px]" />
-                ))}
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {products?.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
-            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
           </div>
         </section>
 
@@ -116,58 +96,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Blog Preview */}
-        <section className="py-24">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">From Our Blog</h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Tips and insights for golf cart maintenance
-              </p>
-            </div>
-
-            {blogLoading ? (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {[...Array(3)].map((_, i) => (
-                  <Skeleton key={i} className="h-[300px]" />
-                ))}
-              </div>
-            ) : latestPosts.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {latestPosts.map((post) => (
-                  <Link key={post.id} href={`/blog/${post.slug}`}>
-                    <div className="group hover-elevate rounded-lg overflow-hidden transition-all duration-200">
-                      <div className="aspect-video overflow-hidden bg-muted">
-                        <img
-                          src={post.heroImage}
-                          alt={post.title}
-                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                      </div>
-                      <div className="p-6 bg-card">
-                        <span className="text-xs font-semibold text-primary uppercase">{post.category}</span>
-                        <h3 className="text-xl font-semibold mt-2 mb-3 line-clamp-2">{post.title}</h3>
-                        <p className="text-muted-foreground text-sm line-clamp-3">{post.excerpt}</p>
-                        <Button variant="link" className="mt-4 p-0">
-                          Read More <ArrowRight className="ml-1 h-4 w-4" />
-                        </Button>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            ) : null}
-
-            <div className="text-center mt-12">
-              <Button asChild variant="outline" size="lg" data-testid="button-view-all-posts">
-                <Link href="/blog">
-                  View All Posts
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer />

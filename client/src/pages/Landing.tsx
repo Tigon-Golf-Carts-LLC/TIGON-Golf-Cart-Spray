@@ -4,17 +4,11 @@ import { ArrowRight, Sparkles, Shield, Truck, Award, Check, Droplets, Car, Leaf 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO, seoPresets } from "@/components/SEO";
-import { useQuery } from "@tanstack/react-query";
 import { ProductCard } from "@/components/ProductCard";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardContent } from "@/components/ui/card";
-import type { Product } from "@shared/schema";
+import { products } from "@/data/products";
 
 export default function Landing() {
-  const { data: products, isLoading: productsLoading } = useQuery<Product[]>({
-    queryKey: ["/api/products"],
-  });
-
   return (
     <div className="flex min-h-screen flex-col">
       <SEO {...seoPresets.home} />
@@ -63,23 +57,11 @@ export default function Landing() {
               </p>
             </div>
             
-            {productsLoading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="space-y-4">
-                    <Skeleton className="h-48 w-full rounded-lg" />
-                    <Skeleton className="h-4 w-3/4" />
-                    <Skeleton className="h-4 w-1/2" />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {products?.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
-            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
             
             <div className="text-center mt-10">
               <Button size="lg" asChild className="text-lg px-8" data-testid="button-view-all-products">
