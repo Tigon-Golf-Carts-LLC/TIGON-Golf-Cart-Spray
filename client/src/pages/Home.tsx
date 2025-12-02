@@ -5,8 +5,11 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArrowRight, Shield, Leaf, Truck, Award } from "lucide-react";
 import { products } from "@/data/products";
+import { blogPosts } from "@/data/blogs";
 
 export default function Home() {
+  const latestPosts = blogPosts.filter(p => p.published).slice(0, 3);
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -92,6 +95,53 @@ export default function Home() {
                 <h3 className="font-semibold">Made in USA</h3>
                 <p className="text-sm text-muted-foreground">Quality you can trust</p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Blog Preview */}
+        <section className="py-24">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">From Our Blog</h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Tips and insights for golf cart maintenance
+              </p>
+            </div>
+
+            {latestPosts.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {latestPosts.map((post, index) => (
+                  <Link key={index} href={`/blog/${post.slug}`}>
+                    <div className="group hover-elevate rounded-lg overflow-hidden transition-all duration-200">
+                      <div className="aspect-video overflow-hidden bg-muted">
+                        <img
+                          src={post.heroImage}
+                          alt={post.title}
+                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="p-6 bg-card">
+                        <span className="text-xs font-semibold text-primary uppercase">{post.category}</span>
+                        <h3 className="text-xl font-semibold mt-2 mb-3 line-clamp-2">{post.title}</h3>
+                        <p className="text-muted-foreground text-sm line-clamp-3">{post.excerpt}</p>
+                        <Button variant="link" className="mt-4 p-0">
+                          Read More <ArrowRight className="ml-1 h-4 w-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            <div className="text-center mt-12">
+              <Button asChild variant="outline" size="lg" data-testid="button-view-all-posts">
+                <Link href="/blog">
+                  View All Posts
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
             </div>
           </div>
         </section>

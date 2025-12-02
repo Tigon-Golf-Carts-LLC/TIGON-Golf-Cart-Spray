@@ -1,12 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowRight, Calendar } from "lucide-react";
 import { SEO, seoPresets } from "@/components/SEO";
+import { blogPosts } from "@/data/blogs";
 import type { BlogPost } from "@shared/schema";
 
 function formatDate(date: Date | string | null) {
@@ -20,11 +19,7 @@ function formatDate(date: Date | string | null) {
 }
 
 export default function Blog() {
-  const { data: posts, isLoading } = useQuery<BlogPost[]>({
-    queryKey: ["/api/blog"],
-  });
-
-  const publishedPosts = posts?.filter(post => post.published) || [];
+  const publishedPosts = blogPosts.filter(post => post.published) || [];
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -42,16 +37,10 @@ export default function Blog() {
             </p>
           </div>
 
-          {isLoading ? (
+          {publishedPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...Array(6)].map((_, i) => (
-                <Skeleton key={i} className="h-[400px]" />
-              ))}
-            </div>
-          ) : publishedPosts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {publishedPosts.map((post) => (
-                <Link key={post.id} href={`/blog/${post.slug}`}>
+              {publishedPosts.map((post, index) => (
+                <Link key={index} href={`/blog/${post.slug}`}>
                   <Card className="group hover-elevate transition-all duration-200 h-full flex flex-col">
                     <CardContent className="p-0 flex-1 flex flex-col">
                       <div className="aspect-video overflow-hidden rounded-t-lg bg-muted">
@@ -59,7 +48,7 @@ export default function Blog() {
                           src={post.heroImage}
                           alt={post.heroImageAlt || post.title}
                           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                          data-testid={`img-blog-post-${post.id}`}
+                          data-testid={`img-blog-post-${index}`}
                         />
                       </div>
                       <div className="p-6 flex-1 flex flex-col">
@@ -70,7 +59,7 @@ export default function Blog() {
                             {formatDate(post.publishedAt)}
                           </span>
                         </div>
-                        <h2 className="text-xl font-semibold mb-3 line-clamp-2" data-testid={`text-blog-title-${post.id}`}>
+                        <h2 className="text-xl font-semibold mb-3 line-clamp-2" data-testid={`text-blog-title-${index}`}>
                           {post.title}
                         </h2>
                         <p className="text-muted-foreground text-sm line-clamp-3 mb-4 flex-1">
