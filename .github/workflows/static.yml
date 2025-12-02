@@ -50,6 +50,7 @@ jobs:
         run: |
           cp CNAME dist/public/CNAME
           cp -r public/* dist/public/ || true
+          cp -r attached_assets dist/public/ || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

@@ -1,4 +1,4 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useRoute, Link } from "wouter";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Skeleton } from "@/components/ui/skeleton";
 import { ShoppingCart, Check, ExternalLink, Star, Clock, Bell, Loader2, X } from "lucide-react";
 import { SiAmazon } from "react-icons/si";
 import { useCart } from "@/contexts/CartContext";
@@ -15,6 +14,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { SEO } from "@/components/SEO";
 import { apiRequest } from "@/lib/queryClient";
+import { getProductBySlug } from "@/data/products";
 import type { Product } from "@shared/schema";
 
 export default function ProductDetail() {
@@ -24,10 +24,7 @@ export default function ProductDetail() {
   const [email, setEmail] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const { data: product, isLoading } = useQuery<Product>({
-    queryKey: [`/api/products/${params?.slug}`],
-    enabled: !!params?.slug,
-  });
+  const product = params?.slug ? getProductBySlug(params.slug) : undefined;
 
   const backorderMutation = useMutation({
     mutationFn: async (data: { productId: string; email: string }) => {
@@ -67,27 +64,6 @@ export default function ProductDetail() {
       backorderMutation.mutate({ productId: product.id, email });
     }
   };
-
-  if (isLoading) {
-    return (
-      <div className="flex min-h-screen flex-col">
-        <Header />
-        <main className="flex-1 py-12">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <Skeleton className="aspect-square" />
-              <div className="space-y-6">
-                <Skeleton className="h-12" />
-                <Skeleton className="h-24" />
-                <Skeleton className="h-32" />
-              </div>
-            </div>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
 
   if (!product) {
     return (
